@@ -10,13 +10,12 @@ import { DemoComponent } from './demo.component';
   declarations: [
     MainComponent,
     FormulariosComponent,
-    DemoComponent
-    
+    DemoComponent,
   ],
   imports: [
     DemoRoutingModule,
     NbCardModule,
     ThemeModule,
-  ]
+  ],
 })
 export class DemoModule { }

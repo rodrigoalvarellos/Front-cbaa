@@ -15,7 +15,7 @@ import { PagesComponent } from './pages.component';
     ThemeModule,
     NbMenuModule,
     DashboardModule,
-    DemoModule
+    DemoModule,
   ],
   declarations: [
     PagesComponent,

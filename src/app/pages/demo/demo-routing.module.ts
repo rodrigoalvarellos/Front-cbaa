@@ -14,15 +14,15 @@ const routes: Routes = [
         {
           path: 'main',
           component: MainComponent,
-        },       
+        },
         {
           path: 'forms',
           component: FormulariosComponent,
-        },       
+        },
       ],
     },
   ];
-  
+
   @NgModule({
     imports: [
       RouterModule.forChild(routes),
