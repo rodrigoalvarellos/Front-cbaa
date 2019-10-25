@@ -1,7 +1,8 @@
-import { DemoRoutingModule } from './demo-routing.module';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { DemoRoutingModule } from './demo-routing.module';
 import { ThemeModule } from '../../@theme/theme.module';
-import { NbCardModule } from '@nebular/theme';
 import { MainComponent } from './main/main.component';
 import { FormulariosComponent } from './formularios/formularios.component';
 import { DemoComponent } from './demo.component';
@@ -13,8 +14,9 @@ import { DemoComponent } from './demo.component';
     DemoComponent,
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     DemoRoutingModule,
-    NbCardModule,
     ThemeModule,
   ],
 })

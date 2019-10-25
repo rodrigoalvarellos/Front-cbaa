@@ -12,6 +12,11 @@ import {
   NbSelectModule,
   NbIconModule,
   NbThemeModule,
+  NbCardModule,
+  NbInputModule,
+  NbDatepickerModule,
+  NbCheckboxModule,
+  NbRadioModule,
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NbSecurityModule } from '@nebular/security';
@@ -53,6 +58,14 @@ const NB_MODULES = [
   NbSelectModule,
   NbIconModule,
   NbEvaIconsModule,
+  // Haca los modulos extras
+  NbMenuModule,
+  NbCardModule,
+  NbInputModule,
+  NbDatepickerModule,
+  NbCheckboxModule,
+  NbRadioModule,
+
 ];
 const COMPONENTS = [
   SwitcherComponent,
@@ -74,7 +87,7 @@ const PIPES = [
 
 @NgModule({
   imports: [CommonModule, ...NB_MODULES],
-  exports: [CommonModule, ...PIPES, ...COMPONENTS],
+  exports: [CommonModule, ...PIPES, ...COMPONENTS, ...NB_MODULES],
   declarations: [...COMPONENTS, ...PIPES],
 })
 export class ThemeModule {

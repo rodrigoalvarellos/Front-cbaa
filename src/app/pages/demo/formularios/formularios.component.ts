@@ -8,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormulariosComponent implements OnInit {
 
+  checked = false;
+  sexos = [
+    { value: 'Masculino', label: 'Masculino' },
+    { value: 'Femenino', label: 'Femenino' },
+    { value: 'NS/NC', label: 'NS/NC' },
+  ];
+  sexoSel: any;
+
   constructor() { }
 
   ngOnInit() {
+    this.sexoSel = this.sexos[0].value;
+  }
+
+  toggleCheck(checked: boolean) {
+    this.checked = checked;
   }
 
 }
