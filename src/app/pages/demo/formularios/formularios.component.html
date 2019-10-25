@@ -4,8 +4,10 @@
     <form [formGroup]="myForm" (ngSubmit)="guardarForm()">
       <div class="row">
         <div class="col-sm-6">
-          <div class="form-group">
-            <label for="inputFirstName" class="label">Nombre y Apellido</label>
+          <div class="form-group" >
+            <label for="inputFirstName" class="label">Nombre y Apellido 
+              <span class="ml-3 text-danger" *ngIf="formErrors.nombre" >- {{ formErrors.nombre }}</span>
+            </label>
             <input
               type="text"
               nbInput
@@ -13,7 +15,11 @@
               id="inputFirstName"
               placeholder="Nombre y apellido"
               formControlName="nombre"
+              [status]=" formErrors.nombre? 'danger': ''"
             />
+            <span *ngIf="formErrors.nombre">
+                {{ formErrors.nombre }}
+            </span>
           </div>
         </div>
         <div class="col-sm-6">
@@ -46,6 +52,9 @@
               shape="round"
               formControlName="email"
             />
+            <span *ngIf="formErrors.email">
+                {{ formErrors.email }}
+            </span>
           </div>
         </div>
 
@@ -96,7 +105,10 @@
 
         <div class="col-sm-4">
           <label class="label">Vacunaciones</label><br />
-          <nb-checkbox (checkedChange)="toggleCheck($event)" status="primary" formControlName="sarampion"
+          <nb-checkbox
+            (checkedChange)="toggleCheck($event)"
+            status="primary"
+            formControlName="sarampion"
             >Sarampión</nb-checkbox
           >
           <nb-checkbox status="success">Dengue</nb-checkbox>
@@ -116,12 +128,21 @@
 
       <div class="row"></div>
 
-      <button type="button" class="mt-3" nbButton outline status="danger" (click)="resetearForm()">Reset Form</button>
+      <button
+        type="button"
+        class="mt-3"
+        nbButton
+        outline
+        status="danger"
+        (click)="resetearForm()"
+      >
+        Reset Form
+      </button>
       <button class="float-right mt-3" type="submit" nbButton>Submit</button>
     </form>
   </nb-card-body>
 </nb-card>
-
+<pre>{{ "Formulario es valido? " + myForm.valid }}</pre>
 <pre>
   {{ myForm.value | json }}
 </pre>
