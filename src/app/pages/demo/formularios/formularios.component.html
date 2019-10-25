@@ -1,114 +1,127 @@
 <nb-card>
   <nb-card-header><h3>Formulario Demo</h3></nb-card-header>
   <nb-card-body>
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="form-group">
-          <label for="inputFirstName" class="label">Nombre y Apellido</label>
-          <input
-            type="text"
-            nbInput
-            fullWidth
-            id="inputFirstName"
-            placeholder="Nombre y apellido"
-          />
+    <form [formGroup]="myForm" (ngSubmit)="guardarForm()">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="inputFirstName" class="label">Nombre y Apellido</label>
+            <input
+              type="text"
+              nbInput
+              fullWidth
+              id="inputFirstName"
+              placeholder="Nombre y apellido"
+              formControlName="nombre"
+            />
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="inputProfesion" class="label">Profesión</label>
+            <nb-select
+              id="inputProfesion"
+              fullWidth
+              shape="semi-round"
+              formControlName="profesion"
+            >
+              <nb-option value="1">Ingeniero en Sistemas</nb-option>
+              <nb-option value="2">Analista en Sistemas</nb-option>
+              <nb-option value="3">UX Designer</nb-option>
+            </nb-select>
+          </div>
         </div>
       </div>
-      <div class="col-sm-6">
-        <div class="form-group">
-          <label for="inputProfesion" class="label">Profesión</label>
-          <nb-select
-            selected="1"
-            id="inputProfesion"
+
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="inputEmail" class="label">Email</label>
+            <input
+              type="email"
+              nbInput
+              fullWidth
+              id="inputEmail"
+              placeholder="Email"
+              shape="round"
+              formControlName="email"
+            />
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="inputWebsite" class="label">Website</label>
+            <input
+              type="text"
+              nbInput
+              fullWidth
+              id="inputWebsite"
+              placeholder="Website"
+              shape="rectangle"
+              formControlName="website"
+            />
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="inputDate" class="label">Fecha de nacimiento</label>
+            <input
+              nbInput
+              id="inputDate"
+              placeholder="Selecciona una fecha"
+              [nbDatepicker]="formpicker"
+              fullWidth
+              formControlName="fechaNac"
+            />
+            <nb-datepicker #formpicker></nb-datepicker>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-5">
+          <label for="inputDescripcion" class="label">Descripción</label>
+          <textarea
+            id="inputDescripcion"
+            nbInput
             fullWidth
             shape="semi-round"
+            placeholder="Una text area como la gente"
+            rows="5"
+            formControlName="descripcion"
+          ></textarea>
+        </div>
+
+        <div class="col-sm-4">
+          <label class="label">Vacunaciones</label><br />
+          <nb-checkbox (checkedChange)="toggleCheck($event)" status="primary" formControlName="sarampion"
+            >Sarampión</nb-checkbox
           >
-            <nb-option value="1">Ingeniero en Sistemas</nb-option>
-            <nb-option value="2">Analista en Sistemas</nb-option>
-            <nb-option value="2">UX Designer</nb-option>
-          </nb-select>
+          <nb-checkbox status="success">Dengue</nb-checkbox>
+          <nb-checkbox status="danger">Hepatitis</nb-checkbox>
+          <nb-checkbox status="warning">Paperas</nb-checkbox>
         </div>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col-sm-4">
-        <div class="form-group">
-          <label for="inputEmail" class="label">Email</label>
-          <input
-            type="email"
-            nbInput
-            fullWidth
-            id="inputEmail"
-            placeholder="Email"
-            shape="round"
-          />
+        <div class="col-sm-3">
+          <label for="sexoGroup" class="label">Sexo: </label>
+          <nb-radio-group id="sexoGroup" formControlName="sexo">
+            <nb-radio *ngFor="let sex of sexos" [value]="sex.value">
+              {{ sex.label }}
+            </nb-radio>
+          </nb-radio-group>
         </div>
       </div>
 
-      <div class="col-sm-4">
-        <div class="form-group">
-          <label for="inputWebsite" class="label">Website</label>
-          <input
-            type="text"
-            nbInput
-            fullWidth
-            id="inputWebsite"
-            placeholder="Website"
-            shape="rectangle"
-          />
-        </div>
-      </div>
+      <div class="row"></div>
 
-      <div class="col-sm-4">
-        <div class="form-group">
-          <label for="inputDate" class="label">Fecha de nacimiento</label>
-          <input
-            nbInput
-            id="inputDate"
-            placeholder="Selecciona una fecha"
-            [nbDatepicker]="formpicker"
-            fullWidth
-          />
-          <nb-datepicker #formpicker></nb-datepicker>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-4">
-        <label class="label">Vacunaciones</label><br>
-        <nb-checkbox (checkedChange)="toggleCheck($event)" status="primary" >Primary</nb-checkbox>
-        <nb-checkbox status="success">Success</nb-checkbox>
-        <nb-checkbox status="danger">Danger</nb-checkbox>
-        <nb-checkbox status="warning">Warning</nb-checkbox>
-      </div>
-
-      <div class="col-sm-4">
-
-        <label for="sexoGroup" class="label">Sexo: {{ sexoSel | json }} </label>
-        <nb-radio-group id="sexoGroup" [(ngModel)]="sexoSel">
-          <nb-radio *ngFor="let sex of sexos" [value]="sex.value">
-            {{ sex.label }}
-          </nb-radio>
-        </nb-radio-group>        
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-12 mt-3">
-        <label for="inputDescripcion" class="label">Descripción</label>
-        <textarea
-          id="inputDescripcion"
-          nbInput
-          fullWidth
-          shape="semi-round"
-          placeholder="Una text area como la gente"
-          rows="5"
-        ></textarea>
-      </div>
-    </div>
-
-    <button class="float-right mt-3" type="submit" nbButton>Submit</button>
+      <button type="button" class="mt-3" nbButton outline status="danger" (click)="resetearForm()">Reset Form</button>
+      <button class="float-right mt-3" type="submit" nbButton>Submit</button>
+    </form>
   </nb-card-body>
 </nb-card>
+
+<pre>
+  {{ myForm.value | json }}
+</pre>
