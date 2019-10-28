@@ -106,12 +106,14 @@
       true,
       "attribute",
       "ngx",
+      "cba",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
       "ngx",
+      "cba",
       "kebab-case"
     ],
     "ban": [

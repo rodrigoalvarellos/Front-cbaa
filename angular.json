@@ -5,7 +5,8 @@
   "projects": {
     "front-cbaa": {
       "root": "",
-      "sourceRoot": "src",
+      "sourceRoot": "src",  
+      "prefix": "cba",
       "projectType": "application",
       "architect": {
         "build": {

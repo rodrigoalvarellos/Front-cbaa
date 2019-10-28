@@ -19,6 +19,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Forms',
         link: '/pages/demo/forms',
       },
+      {
+        title: 'Modals',
+        link: '/pages/demo/modals',
+      },
+      {
+        title: 'Toasters',
+        link: '/pages/demo/toasters',
+      },
 
     ],
   },

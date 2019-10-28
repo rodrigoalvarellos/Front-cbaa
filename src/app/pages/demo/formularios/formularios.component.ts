@@ -3,8 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { FormValidationService } from '../../../services/forms-validations.service';
 
 @Component({
-  // tslint:disable-next-line: component-selector
-  selector: 'formularios',
+  selector: 'cba-formularios',
   templateUrl: './formularios.component.html',
   styleUrls: ['./formularios.component.scss'],
 })

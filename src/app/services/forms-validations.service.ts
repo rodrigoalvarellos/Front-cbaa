@@ -35,7 +35,7 @@ export class FormValidationService {
 
     for (const field in formErrors) {
       if (field) {
-        
+
         formErrors[field] = '';
 
         const control = form.get(field);
