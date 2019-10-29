@@ -1,0 +1,16 @@
+@import '../../../@theme/styles/themes';
+
+@include nb-install-component() {
+
+  nb-card-body {
+    padding: 0;
+  }
+
+  agm-map {  
+    height: calc(100vh - 140px);
+  }
+}
+
+
+
+

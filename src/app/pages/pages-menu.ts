@@ -27,6 +27,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Toasters',
         link: '/pages/demo/toasters',
       },
+      {
+        title: 'Maps',
+        link: '/pages/demo/maps',
+      },
 
     ],
   },

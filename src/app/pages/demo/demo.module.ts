@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AgmCoreModule } from '@agm/core';
 
 import { DemoRoutingModule } from './demo-routing.module';
 import { ThemeModule } from '../../@theme/theme.module';
@@ -10,6 +11,7 @@ import { ModalsComponent } from './modals/modals.component';
 import { NbDialogModule } from '@nebular/theme';
 import { DialogContentComponent } from './modals/dialog-content/dialog-content.component';
 import { ToastersComponent } from './toasters/toasters.component';
+import { MapsComponent } from './maps/maps.component';
 @NgModule({
   declarations: [
     MainComponent,
@@ -18,6 +20,7 @@ import { ToastersComponent } from './toasters/toasters.component';
     ModalsComponent,
     DialogContentComponent,
     ToastersComponent,
+    MapsComponent,
   ],
   imports: [
     FormsModule,
@@ -25,6 +28,10 @@ import { ToastersComponent } from './toasters/toasters.component';
     DemoRoutingModule,
     ThemeModule,
     NbDialogModule.forChild(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDrPAwLwfHuEjpwDaY6BkbfzFAJeMN4epU',
+      libraries: ['places'],
+    }),
   ],
   entryComponents: [
     DialogContentComponent,

@@ -7,6 +7,7 @@ import { FormulariosComponent } from './formularios/formularios.component';
 import { DemoComponent } from './demo.component';
 import { ModalsComponent } from './modals/modals.component';
 import { ToastersComponent } from './toasters/toasters.component';
+import { MapsComponent } from './maps/maps.component';
 
 const routes: Routes = [
     {
@@ -28,6 +29,10 @@ const routes: Routes = [
         {
           path: 'toasters',
           component: ToastersComponent,
+        },
+        {
+          path: 'maps',
+          component: MapsComponent,
         },
       ],
     },
