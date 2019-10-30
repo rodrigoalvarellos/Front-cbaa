@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Marcador } from './marcador.class';
 import { ToastrService } from '../../../services/toastr.service';
 import { InfoWindow } from '@agm/core/services/google-maps-types';
+import { NbSidebarService } from '@nebular/theme';
 
 @Component({
   selector: 'cba-maps',
@@ -14,33 +15,14 @@ export class MapsComponent implements OnInit {
   marcadores: Marcador[] = [];
   lat = -31.4074091;
   lng = -64.1913104;
-  @Input() zoom = 13;
   previous: InfoWindow;
 
-  labelOptions = {
-    color: 'white',
-    fontFamily: '',
-    fontSize: '14px',
-    fontWeight: 'bold',
-    text: '1',
-  };
+  @Input() zoom = 13;
 
 
-  iconMarker = {
-    // url: 'assets/map-markers/red-marker.svg',
-    // url: 'assets/map-markers/blue-marker.svg',
-    // url: 'assets/map-markers/green-marker.svg',
-    // url: 'assets/map-markers/lightblue-marker.svg',
-    // url: 'assets/map-markers/yellow-marker.svg',
-    // url: 'assets/map-markers/orange-marker.svg',
-    url: 'assets/map-markers/purple-marker.svg',
-    scaledSize: {
-      width: 40,
-      height: 40,
-    },
-  };
-
-  constructor(private toastr$: ToastrService) {
+  constructor(
+    private toastr$: ToastrService,
+    private sidebar$: NbSidebarService ) {
 
     if (localStorage.getItem('marcadores')) {
       this.marcadores = JSON.parse(localStorage.getItem('marcadores'));
@@ -48,11 +30,13 @@ export class MapsComponent implements OnInit {
 
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.sidebar$.toggle(true, 'menu-sidebar');
+  }
 
   agregarMarcador(evento: any) {
     const coords: { lat: number, lng: number } = evento.coords;
-    const nuevoMarcador = new Marcador(coords.lat, coords.lng);
+    const nuevoMarcador = new Marcador(coords.lat, coords.lng, 'orange');
     this.marcadores.push(nuevoMarcador);
     this.guardarStorage();
     this.toastr$.showToast('success', 'Excelente!', 'Marcador agregado con exito');
