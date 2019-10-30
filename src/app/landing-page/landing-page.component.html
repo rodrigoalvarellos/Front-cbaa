@@ -1,17 +1,35 @@
-<nb-layout>
-  <nb-layout-header fixed>
+<nb-layout class="custom">
+  <nb-layout-header class="custom" fixed>
+
     <img src="assets/svg/partnership.svg" class="partnership-icon mx-4" alt="Partnership">
     <img src="assets/svg/cba-accesible.png" alt="CBA-Accesible" style="width: 350px;">
+
     <!-- <h1 class="text-white ml-3">CBA - Accesible</h1> -->
-
-
-    <span class="spacer"></span>
-    <button nbButton hero status="success">Ingresar</button>
+    <span class="spacer"></span>    
+    <button nbButton hero status="success" [routerLink]="'/pages'">Ingresar</button>
   </nb-layout-header>
-  <nb-layout-column>
-    <div >
-      <p>landing-page works!</p>
+
+  <nb-layout-column class="custom">
+
+    <div class="row">
+        <div class="col-6 text-justify">
+            <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo repellendus nesciunt fugit eligendi facere commodi quam ratione voluptatem quasi officia pariatur veniam expedita nam voluptate tenetur cupiditate at, eos animi?</p>
+            <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo repellendus nesciunt fugit eligendi facere commodi quam ratione voluptatem quasi officia pariatur veniam expedita nam voluptate tenetur cupiditate at, eos animi?</p>
+            <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo repellendus nesciunt fugit eligendi facere commodi quam ratione voluptatem quasi officia pariatur veniam expedita nam voluptate tenetur cupiditate at, eos animi?</p>
+            <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo repellendus nesciunt fugit eligendi facere commodi quam ratione voluptatem quasi officia pariatur veniam expedita nam voluptate tenetur cupiditate at, eos animi?</p>
+        </div>
+        
+        <div class="col-6 text-justify">
+            <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo repellendus nesciunt fugit eligendi facere commodi quam ratione voluptatem quasi officia pariatur veniam expedita nam voluptate tenetur cupiditate at, eos animi?</p>
+            <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo repellendus nesciunt fugit eligendi facere commodi quam ratione voluptatem quasi officia pariatur veniam expedita nam voluptate tenetur cupiditate at, eos animi?</p>
+            <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo repellendus nesciunt fugit eligendi facere commodi quam ratione voluptatem quasi officia pariatur veniam expedita nam voluptate tenetur cupiditate at, eos animi?</p>
+            <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo repellendus nesciunt fugit eligendi facere commodi quam ratione voluptatem quasi officia pariatur veniam expedita nam voluptate tenetur cupiditate at, eos animi?</p>
+        </div>
     </div>
+   
   </nb-layout-column> 
-  <nb-layout-footer></nb-layout-footer>
+
+  <nb-layout-footer class="custom">
+      <span class="text-white ">Rodri Alvarellos</span>
+  </nb-layout-footer>
 </nb-layout>
