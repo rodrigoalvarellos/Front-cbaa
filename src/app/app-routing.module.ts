@@ -1,5 +1,6 @@
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 import {
   NbAuthComponent,
   NbLoginComponent,
@@ -11,51 +12,55 @@ import {
 
 const routes: Routes = [
   {
+    path: 'landing',
+    component: LandingPageComponent,
+  },
+  {
     path: 'pages',
     loadChildren: () => import('app/pages/pages.module')
       .then(m => m.PagesModule),
   },
-  {
-    path: 'auth',
-    component: NbAuthComponent,
-    children: [
-      {
-        path: '',
-        component: NbLoginComponent,
-      },
-      {
-        path: 'login',
-        component: NbLoginComponent,
-      },
-      {
-        path: 'register',
-        component: NbRegisterComponent,
-      },
-      {
-        path: 'logout',
-        component: NbLogoutComponent,
-      },
-      {
-        path: 'request-password',
-        component: NbRequestPasswordComponent,
-      },
-      {
-        path: 'reset-password',
-        component: NbResetPasswordComponent,
-      },
-    ],
-  },
-  { path: '', redirectTo: 'pages', pathMatch: 'full' },
-  { path: '**', redirectTo: 'pages' },
+  { path: '', redirectTo: '/landing', pathMatch: 'full' },
+  { path: '**', redirectTo: 'landing' },
 ];
 
 const config: ExtraOptions = {
-  useHash: false,
+  useHash: true,
 };
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, config)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}
+
+// {
+//   path: 'auth',
+//   component: NbAuthComponent,
+//   children: [
+//     {
+//       path: '',
+//       component: NbLoginComponent,
+//     },
+//     {
+//       path: 'login',
+//       component: NbLoginComponent,
+//     },
+//     {
+//       path: 'register',
+//       component: NbRegisterComponent,
+//     },
+//     {
+//       path: 'logout',
+//       component: NbLogoutComponent,
+//     },
+//     {
+//       path: 'request-password',
+//       component: NbRequestPasswordComponent,
+//     },
+//     {
+//       path: 'reset-password',
+//       component: NbResetPasswordComponent,
+//     },
+//   ],
+// },

@@ -12,17 +12,18 @@ import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {
-  NbChatModule,
   NbDatepickerModule,
   NbDialogModule,
   NbMenuModule,
   NbSidebarModule,
   NbToastrModule,
-  NbWindowModule,
+  // NbChatModule,
+  // NbWindowModule,
 } from '@nebular/theme';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LandingPageComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
