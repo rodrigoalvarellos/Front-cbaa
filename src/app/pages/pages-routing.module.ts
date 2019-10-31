@@ -13,6 +13,11 @@ const routes: Routes = [{
       component: DashboardComponent,
     },
     {
+      path: 'lugares',
+      loadChildren: () => import('./lugares/lugares.module')
+        .then(m => m.LugaresModule),
+    },
+    {
       path: 'demo',
       loadChildren: () => import('./demo/demo.module')
         .then(m => m.DemoModule),
