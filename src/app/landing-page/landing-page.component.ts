@@ -9,6 +9,7 @@ import { NbSpinnerService } from '@nebular/theme';
 })
 export class LandingPageComponent implements OnInit {
 
+
   constructor(private spinner$: NbSpinnerService ) { }
 
   ngOnInit() {
