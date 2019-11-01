@@ -18,6 +18,8 @@
 @import './layout';
 @import './overrides';
 
+@import './cbaa';
+
 // install the framework and custom global styles
 @include nb-install() {
 

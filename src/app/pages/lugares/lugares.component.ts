@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NbSidebarService } from '@nebular/theme';
 
 @Component({
   selector: 'cba-lugares',
@@ -9,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LugaresComponent implements OnInit {
 
-  constructor() { }
+  constructor( private sidebar$: NbSidebarService ) { }
 
   ngOnInit() {
+
+    this.sidebar$.toggle(true, 'menu-sidebar');
+    // this.sidebar$.collapse('menu-sidebar');
   }
 
 }

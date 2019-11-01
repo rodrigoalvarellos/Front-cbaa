@@ -1,6 +1,6 @@
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { LandingPageComponent } from './landing-page/landing-page.component';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import {
   NbAuthComponent,
   NbLoginComponent,
