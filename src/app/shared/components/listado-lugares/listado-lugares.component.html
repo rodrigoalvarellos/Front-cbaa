@@ -1,1 +1,20 @@
-<p>listado-lugares works!</p>
+<nb-card class="own-scroll">
+  <nb-card-header>
+    Lugares
+  </nb-card-header>
+  <nb-list>
+    <nb-list-item *ngFor="let item of items">
+      <div class="row">
+        <div class="col-auto">
+          <img [src]="item.img" style="height: 32px; width: 32px;"/>
+        </div>
+        <div class="col-auto">
+          <b>{{ item.titulo }}</b>          
+        </div>
+        <div class="col-12">
+          <p>{{ item.descripcion | slice: 0:50 }}</p>
+        </div>
+      </div>
+    </nb-list-item>
+  </nb-list>
+</nb-card>

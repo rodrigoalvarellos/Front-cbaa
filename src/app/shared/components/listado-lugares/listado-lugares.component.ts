@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Marcador } from '../../../classes/marcador.class';
 
 @Component({
   selector: 'cba-listado-lugares',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listado-lugares.component.scss']
 })
 export class ListadoLugaresComponent implements OnInit {
+
+  @Input() items: Marcador[] = [];
 
   constructor() { }
 

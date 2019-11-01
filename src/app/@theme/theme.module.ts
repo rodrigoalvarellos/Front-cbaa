@@ -17,6 +17,7 @@ import {
   NbDatepickerModule,
   NbCheckboxModule,
   NbRadioModule,
+  NbListModule,
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NbSecurityModule } from '@nebular/security';
@@ -65,6 +66,7 @@ const NB_MODULES = [
   NbDatepickerModule,
   NbCheckboxModule,
   NbRadioModule,
+  NbListModule,
 
 ];
 const COMPONENTS = [

@@ -1,8 +1,8 @@
-<div class="row box-debbug full-height" >
-    <div class="col-sm-3 box-debbug">
-       <cba-listado-lugares></cba-listado-lugares>
+<div class="row full-height" >
+    <div class="col-sm-4">
+       <cba-listado-lugares [items]="marcadores"></cba-listado-lugares>
     </div>
-    <div class="col-sm-9 box-debbug">        
-        <cba-mapa></cba-mapa>
+    <div class="col-sm-8">        
+        <cba-mapa [marcadores]="marcadores" [zoom]="2"></cba-mapa>
     </div>
 </div>

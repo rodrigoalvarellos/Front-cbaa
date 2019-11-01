@@ -5,6 +5,7 @@ import { ThemeModule } from '../../@theme/theme.module';
 import { LugaresRoutingModule } from './lugares-routing.module';
 import { MainComponent } from './main/main.component';
 import { SharedModule } from '../../shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -18,6 +19,7 @@ import { SharedModule } from '../../shared/shared.module';
     LugaresRoutingModule,
     ThemeModule,
     SharedModule,
+    HttpClientModule,
   ],
 })
 export class LugaresModule { }
