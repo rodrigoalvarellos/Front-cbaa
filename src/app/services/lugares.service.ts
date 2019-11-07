@@ -4,6 +4,7 @@ import { Marcador } from '../classes/marcador.class';
 import { map } from 'rxjs/operators';
 import { ToastrService } from './toastr.service';
 import { Observable } from 'rxjs';
+import { NbAuthJWTToken, NbAuthService } from '@nebular/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -11,11 +12,25 @@ import { Observable } from 'rxjs';
 export class LugaresService {
 
   marcadores: Marcador[] = [];
+  user = {};
 
   constructor(
     private http$: HttpClient,
     private toastr$: ToastrService,
-    ) { }
+    private authService: NbAuthService) {
+
+    this.authService.onTokenChange()
+      .subscribe((token: NbAuthJWTToken) => {
+
+        if (token.isValid()) {
+          this.user = token.getPayload(); // here we receive a payload from the token and assigns it to our `user` variable
+          console.log(this.user);
+          this.authService.getToken().subscribe(token => console.log(token));
+
+        }
+
+      });
+  }
 
   getMarcadores(): Observable<Marcador[]> {
 
@@ -25,7 +40,7 @@ export class LugaresService {
       (data: any) => {
         this.marcadores = data.map(it => {
 
-          return new Marcador(it.lat, it.lng, it.color, it.img, it.titulo, it.descripcion );
+          return new Marcador(it.lat, it.lng, it.color, it.img, it.titulo, it.descripcion);
           // return {
           //   lat: it.lat,
           //   lng: it.lng,
@@ -49,6 +64,19 @@ export class LugaresService {
     return this.http$.get(url).pipe(map(
       (data: any) => data,
     ));
+
+  }
+
+  probarToken() {
+
+    this.authService.onTokenChange()
+      .subscribe((token: NbAuthJWTToken) => {
+
+        if (token.isValid()) {
+          this.user = token.getPayload(); // here we receive a payload from the token and assigns it to our `user` variable 
+        }
+
+      });
 
   }
 }
