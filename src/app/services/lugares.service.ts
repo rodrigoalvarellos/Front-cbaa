@@ -42,4 +42,13 @@ export class LugaresService {
 
     ));
   }
+
+  conectarServer() {
+
+    const url = 'http://localhost:3000/users';
+    return this.http$.get(url).pipe(map(
+      (data: any) => data,
+    ));
+
+  }
 }
