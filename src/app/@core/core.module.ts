@@ -1,6 +1,6 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NbAuthModule, NbDummyAuthStrategy, NbPasswordAuthStrategy, NbAuthJWTToken } from '@nebular/auth';
+// import { NbAuthModule, NbDummyAuthStrategy, NbPasswordAuthStrategy, NbAuthJWTToken } from '@nebular/auth';
 import { NbSecurityModule, NbRoleProvider } from '@nebular/security';
 import { of as observableOf } from 'rxjs';
 
@@ -42,50 +42,50 @@ export class NbSimpleRoleProvider extends NbRoleProvider {
 export const NB_CORE_PROVIDERS = [
   ...MockDataModule.forRoot().providers,
   ...DATA_SERVICES,
-  ...NbAuthModule.forRoot({
+  // ...NbAuthModule.forRoot({
 
-    strategies: [
-      NbDummyAuthStrategy.setup({
-        name: 'email',
-        delay: 3000,
-      }),
-      NbPasswordAuthStrategy.setup({
-        name: 'login',
-        baseEndpoint: 'http://localhost:3000',
-        token: {
-          class: NbAuthJWTToken,
-          key: 'token', // this parameter tells where to look for the token
-        },
-        login: {
-          endpoint: '/auth/login',
-          method: 'post',
-          redirect: {
-            success: '/pages/dashboard', // welcome page path
-            failure: null, // stay on the same page
-          },
-        },
-        // register: {
-        //   // ...
-        //   endpoint: '/api/auth/register',
-        // },
-      }),
+  //   strategies: [
+  //     NbDummyAuthStrategy.setup({
+  //       name: 'email',
+  //       delay: 3000,
+  //     }),
+  //     NbPasswordAuthStrategy.setup({
+  //       name: 'login',
+  //       baseEndpoint: 'http://localhost:3000',
+  //       token: {
+  //         class: NbAuthJWTToken,
+  //         key: 'token', // this parameter tells where to look for the token
+  //       },
+  //       login: {
+  //         endpoint: '/auth/login',
+  //         method: 'post',
+  //         redirect: {
+  //           success: '/pages/dashboard', // welcome page path
+  //           failure: null, // stay on the same page
+  //         },
+  //       },
+  //       // register: {
+  //       //   // ...
+  //       //   endpoint: '/api/auth/register',
+  //       // },
+  //     }),
 
-    ],
-    forms: {
-      login: {
-        redirectDelay: 500,
-        strategy: 'login',
-        rememberMe: true,
-        showMessages: {
-          success: true,
-          error: true,
-        },
-      },
-      // register: {
-      //   socialLinks: socialLinks,
-      // },
-    },
-  }).providers,
+  //   ],
+  //   forms: {
+  //     login: {
+  //       redirectDelay: 500,
+  //       strategy: 'login',
+  //       rememberMe: true,
+  //       showMessages: {
+  //         success: true,
+  //         error: true,
+  //       },
+  //     },
+  //     // register: {
+  //     //   socialLinks: socialLinks,
+  //     // },
+  //   },
+  // }).providers,
 
   NbSecurityModule.forRoot({
     accessControl: {
@@ -112,7 +112,7 @@ export const NB_CORE_PROVIDERS = [
     CommonModule,
   ],
   exports: [
-    NbAuthModule,
+    // NbAuthModule,
   ],
   declarations: [],
 })

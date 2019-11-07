@@ -23,6 +23,7 @@ import {
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { SharedModule } from './shared/shared.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { SharedModule } from './shared/shared.module';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
+    AuthModule,
     ThemeModule.forRoot(),
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
