@@ -1,5 +1,4 @@
 {
     "typescript.tsdk": "./node_modules/typescript/lib",
-    "tslint.enable": false,
-    "workbench.colorTheme": "Atom One Dark"
+    "tslint.enable": false,    
 }

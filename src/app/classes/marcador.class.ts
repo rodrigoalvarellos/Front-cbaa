@@ -17,8 +17,8 @@ export class Marcador implements Lugar {
         lng: number,
         color: string = 'red',
         img: string = 'assets/images/no-image.jpg',
-        titulo: string  = 'Sin Titulo',
-        descripcion: string  = 'Sin Descripcion' ) {
+        titulo: string = 'Sin Titulo',
+        descripcion: string = 'Sin Descripcion') {
 
         this.setsCoords(lat, lng);
         this.setIconURL(color);
@@ -28,7 +28,7 @@ export class Marcador implements Lugar {
     }
 
     getCoords(): { lat: number; lng: number; } {
-       return { lat: this.lat, lng:  this.lng};
+        return { lat: this.lat, lng: this.lng };
     }
 
     setsCoords(lat: number, lng: number): void {
@@ -50,7 +50,7 @@ export class Marcador implements Lugar {
         };
     }
 
-    setLabel( texto: any, color: string = 'white') {
+    setLabel(texto: any, color: string = 'white') {
 
         this.label = {
             color: 'white',

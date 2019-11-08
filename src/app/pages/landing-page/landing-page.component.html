@@ -8,7 +8,7 @@
     <img
       src="assets/svg/cba-accesible.png"
       alt="CBA-Accesible"
-      style="width: 350px;"
+      style="height: 100%;"
     />
 
     <!-- <h1 class="text-white ml-3">CBA - Accesible</h1> -->
@@ -33,13 +33,12 @@
         style="width: 30px;"
       />
     </span>
-    <button nbButton hero status="success" [routerLink]="'/auth/login'">
-      Ingresar
-    </button>
 
-    <button nbButton hero status="success" [routerLink]="'/auth/register'">
-      Registrate
-    </button>
+    <div>
+      <button nbButton hero status="success" [routerLink]="'/auth/login'">Ingresar</button>      
+      <button class="ml-3" nbButton hero status="primary" [routerLink]="'/auth/register'">Registrate</button>
+    </div>
+
   </nb-layout-header>
 
   <nb-layout-column class="custom">
@@ -77,10 +76,11 @@
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
           repellendus nesciunt fugit eligendi facere commodi quam ratione
           voluptatem quasi officia pariatur veniam expedita nam voluptate
-          tenetur cupiditate at, eos animi?Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
-          repellendus nesciunt fugit eligendi facere commodi quam ratione
-          voluptatem quasi officia pariatur veniam expedita nam voluptate
-          tenetur cupiditate at, eos animi?
+          tenetur cupiditate at, eos animi?Lorem ipsum dolor sit amet 
+          consectetur adipisicing elit. Illo repellendus nesciunt fugit 
+          eligendi facere commodi quam ratione voluptatem quasi officia 
+          pariatur veniam expedita nam voluptate tenetur cupiditate at, 
+          eos animi?
         </p>
        
 
@@ -89,7 +89,7 @@
       <div class="col-sm-12 col-md-6">
         <div class="row justify-content-center align-content-center">
           <div class="col-auto">
-            <div class="botonaso">
+            <div class="botonaso" [routerLink]="['/pages/lugares']">
               <div
                 class="row align-content-center justify-content-center"
                 style="height: 100%;"

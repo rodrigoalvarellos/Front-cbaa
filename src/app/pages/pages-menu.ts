@@ -17,6 +17,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/lugares',
   },
   {
+    title: 'Perfil',
+    icon: 'person-outline',
+    link: '/pages/perfil/ver-perfil',
+  },
+  {
     title: 'Demos',
     icon: 'flash-outline',
     children: [
@@ -40,7 +45,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Maps',
         link: '/pages/demo/maps',
       },
-
     ],
   },
   // {
