@@ -1,7 +1,98 @@
 <nb-card>
-    <nb-card-body>
-        <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique ex autem aliquam odio officia quisquam! Ratione porro, ducimus hic quasi architecto assumenda dolore ipsam magni, fugiat voluptatum quod optio. Provident.
-        </p>
-    </nb-card-body>
+  <!-- <nb-card-header class="profile-header">
+    <h3>Mi perfil</h3>
+    <span class="spacer"></span>
+    <button class="float-right" nbButton outline status="warning" size="small">
+      Actualizá tus datos
+    </button>
+  </nb-card-header> -->
+  <nb-card-body>
+    <div class="row" style="width: 100%; padding:0;margin: 0;">
+      <div class="cover-img col-12">
+        <!-- <img
+          src="assets/images/backgrounds/spash_cover.jpg"
+          alt="Cover"
+          class="cover-img"
+        /> -->
+      </div>
+      <div class="col-sm-auto">
+        <img src="assets/images/rodri.png" alt="User img" class="profile-img" />
+      </div>
+      <div class="col-auto align-self-end">
+        <h3>Rodrigo Alvarellos </h3>
+        <!-- <nb-icon icon="star-outline" status="basic"></nb-icon> -->
+        <!-- <p>Developer</p> -->
+      </div>
+      <div class="spacer"></div>
+      <div class="col-auto align-self-end">
+        <button nbButton outline status="success" [routerLink]="['/pages/perfil/editar-perfil']">
+          Actualizá tus datos
+        </button>
+      </div>
+    </div>
+  </nb-card-body>
 </nb-card>
+
+<nb-card>
+  <nb-card-body>
+    <div class="row">
+      <div class="col-12">
+        <h4>Mis datos</h4>
+      </div>
+      <div class="col-md-6">
+        
+        <p class="text-justify">
+          <b>Acerca de mi:</b>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique ex
+          autem aliquam odio officia quisquam! Ratione porro, ducimus hic quasi
+          architecto assumenda dolore ipsam magni, fugiat voluptatum quod optio.
+          Provident.
+        </p>
+      </div>
+      <div class="col-md-6">
+        <ul>
+          <li>Nombre: Pepecito</li>
+          <li>Apellido: Alvarellos</li>
+          <li>Email: rodri.alvarellos@gmail.com</li>
+          <li>Rol: USER</li>
+          <li>Otros: que se yo</li>
+        </ul>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>
+
+<div class="row">
+  <div class="col-sm-12 col-md-6">
+    <nb-card>
+      <nb-card-header>
+        Interesas:
+      </nb-card-header>
+      <nb-card-body>
+        <ul>
+          <li>Deportes</li>
+          <li>Salud</li>
+          <li>Eventos</li>
+          <li>Musica</li>
+          <li>Solidarios</li>
+        </ul>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col-sm-12 col-md-6">
+    <nb-card>
+      <nb-card-header>
+        Siguiendo a:
+      </nb-card-header>
+      <nb-card-body>
+        <ul>
+          <li>Cilsa</li>
+          <li>CBA-Accesible</li>
+          <li>Empate FC</li>
+          <li>X+Inclusion</li>
+          <li>Cumelen</li>
+        </ul>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

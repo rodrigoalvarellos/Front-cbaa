@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NbSpinnerService } from '@nebular/theme';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'cba-landing-page',
@@ -9,8 +10,7 @@ import { NbSpinnerService } from '@nebular/theme';
 })
 export class LandingPageComponent implements OnInit {
 
-
-  constructor(private spinner$: NbSpinnerService ) { }
+  constructor(private spinner$: NbSpinnerService, public login$: LoginService ) { }
 
   ngOnInit() {
     this.spinner$.load();

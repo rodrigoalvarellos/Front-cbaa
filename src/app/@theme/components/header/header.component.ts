@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
 
 import { UserData } from '../../../@core/data/users';
-import { map, takeUntil } from 'rxjs/operators';
+import { map, takeUntil, filter } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -37,7 +37,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   currentTheme = 'default';
 
-  userMenu = [ { title: 'Perfil' }, { title: 'Cerrar Sesión' } ];
+  userMenu = [ 
+    { title: 'Perfil',  link: '/pages/perfil/ver-perfil', icon: 'person-outline' },
+    { title: 'Cerrar Sesión', link: '/landing', icon: 'log-out-outline'},
+  ];
 
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
@@ -67,6 +70,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$),
       )
       .subscribe(themeName => this.currentTheme = themeName);
+
+      // this.menuService.onItemClick()
+      // .pipe(
+      //   filter(({ tag }) => tag === 'header-context-menu'),
+      //   map(({ item: { title } }) => title),
+      // )
+      // .subscribe(title => console.log(`${title} was clicked!`));
   }
 
   ngOnDestroy() {
@@ -88,4 +98,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.menuService.navigateHome();
     return false;
   }
+
+
 }

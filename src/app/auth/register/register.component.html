@@ -69,7 +69,7 @@
       pattern=".+@.+..+"
       placeholder=""
       fullWidth
-      [status]="email.dirty ? (email.invalid ? 'danger' : 'success') : ''"
+      [status]="email.dirty ? (email.invalid ? 'danger' : 'success') : 'basic'"
       [required]="getConfigValue('forms.validation.email.required')"
       [attr.aria-invalid]="email.invalid && email.touched ? true : null"
     />
@@ -94,7 +94,7 @@
       name="password"
       placeholder=""
       fullWidth
-      [status]="email.dirty ? (email.invalid ? 'danger' : 'success') : ''"
+      [status]="email.dirty ? (email.invalid ? 'danger' : 'success') : 'basic'"
       [required]="getConfigValue('forms.validation.password.required')"
       [minlength]="getConfigValue('forms.validation.password.minLength')"
       [maxlength]="getConfigValue('forms.validation.password.maxLength')"
@@ -132,7 +132,7 @@
           ? email.invalid || password.value != rePass.value
             ? 'danger'
             : 'success'
-          : ''
+          : 'basic'
       "
       [required]="getConfigValue('forms.validation.password.required')"
       [attr.aria-invalid]="rePass.invalid && rePass.touched ? true : null"

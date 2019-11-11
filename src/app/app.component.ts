@@ -5,7 +5,7 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { AnalyticsService } from './@core/utils/analytics.service';
-import { LugaresService } from './services/lugares.service';
+import { LoginService } from './services/login.service';
 
 @Component({
   selector: 'ngx-app',
@@ -13,13 +13,13 @@ import { LugaresService } from './services/lugares.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private analytics: AnalyticsService, private lugares$: LugaresService) {
+  constructor(private analytics: AnalyticsService, private login$: LoginService) {
   }
 
   ngOnInit() {
-    this.analytics.trackPageViews();
-    this.lugares$.conectarServer().subscribe(
-      data => console.log(data),
-    );
+    // this.analytics.trackPageViews();
+    // this.login$.conectarServer().subscribe(
+    //   data => console.log(data),
+    // );
   }
 }

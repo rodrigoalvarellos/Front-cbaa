@@ -42,7 +42,7 @@
       pattern=".+@.+\..+"
       placeholder=""
       autofocus
-      [status]="email.dirty ? (email.invalid ? 'danger' : 'success') : ''"
+      [status]="email.dirty ? (email.invalid ? 'danger' : 'success') : 'basic'"
       [required]="getConfigValue('forms.validation.email.required')"
       [attr.aria-invalid]="email.invalid && email.touched ? true : null"
     />
@@ -67,7 +67,7 @@
       type="password"
       id="input-password"
       placeholder=""
-      [status]="password.dirty ? (password.invalid ? 'danger' : 'success') : ''"
+      [status]="password.dirty ? (password.invalid ? 'danger' : 'success') : 'basic'"
       [required]="getConfigValue('forms.validation.password.required')"
       [minlength]="getConfigValue('forms.validation.password.minLength')"
       [maxlength]="getConfigValue('forms.validation.password.maxLength')"

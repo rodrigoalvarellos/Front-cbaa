@@ -1,0 +1,39 @@
+// nb-card {
+//   height: calc(100vh - 165px);
+//   // padding: 0;
+// }
+
+.profile-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.cover-img {
+  width: 100%;
+  border-radius: 25px;
+  background-image: url("assets/images/backgrounds/spash_cover.jpg");
+  background-size: cover;
+  height: 200px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+}
+
+.profile-img {
+  width: 160px;
+  height: 160px;
+  margin-top: -80px;
+  margin-left: 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease;    
+  }
+}

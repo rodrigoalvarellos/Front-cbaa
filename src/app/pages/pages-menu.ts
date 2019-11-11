@@ -17,7 +17,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/lugares',
   },
   {
-    title: 'Perfil',
+    title: 'Mi perfil',
     icon: 'person-outline',
     link: '/pages/perfil/ver-perfil',
   },

@@ -34,9 +34,13 @@
       />
     </span>
 
-    <div>
+    <div *ngIf="!logueado">
       <button nbButton hero status="success" [routerLink]="'/auth/login'">Ingresar</button>      
       <button class="ml-3" nbButton hero status="primary" [routerLink]="'/auth/register'">Registrate</button>
+    </div>
+
+    <div *ngIf="logueado">
+      <button nbButton hero status="success" (click)="login$.logout()">Cerrar Sesion</button>
     </div>
 
   </nb-layout-header>

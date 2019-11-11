@@ -15,7 +15,7 @@
               id="inputFirstName"
               placeholder="Nombre y apellido"
               formControlName="nombre"
-              [status]=" formErrors.nombre? 'danger': ''"
+              [status]=" formErrors.nombre? 'danger': 'basic'"
             />
             <span *ngIf="formErrors.nombre">
                 {{ formErrors.nombre }}
