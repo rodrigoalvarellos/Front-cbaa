@@ -16,7 +16,7 @@ export class VerPerfilComponent implements OnInit {
 
   }
   ngOnInit() {
-  
+
   // this.user = this.login$.user;
    this.getUser();
   }
