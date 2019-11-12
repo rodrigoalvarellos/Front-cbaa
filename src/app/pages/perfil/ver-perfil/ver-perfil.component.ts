@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../../../services/login.service';
+import { IUser } from '../../../classes/user.interface';
+import { NbAuthService, NbAuthJWTToken } from '@nebular/auth';
 
 @Component({
   selector: 'cba-ver-perfil',
@@ -7,8 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VerPerfilComponent implements OnInit {
 
-  constructor() { }
-  ngOnInit() {}
+  user: IUser;
+
+  constructor(public login$: LoginService, public auth$: NbAuthService) {
+
+  }
+  ngOnInit() {
+  
+  // this.user = this.login$.user;
+   this.getUser();
+  }
+
+  getUser() {
+
+    this.auth$.getToken().subscribe((token: NbAuthJWTToken) => {
+
+      if (token.isValid) {
+        const id = token.getPayload().sub;
+        this.login$.getUserById(id).subscribe(user => this.user = user);
+      }
+    });
+  }
+
+
 
 
 }

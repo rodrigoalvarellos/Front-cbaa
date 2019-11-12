@@ -2,51 +2,68 @@ import { Injectable } from '@angular/core';
 import { NbAuthService, NbAuthJWTToken } from '@nebular/auth';
 import { HttpClient } from '@angular/common/http';
 import { IUser } from '../classes/user.interface';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
 
 @Injectable({ providedIn: 'root' })
 export class LoginService {
 
-  logueado = false;
   userId: string;
   user: IUser = {};
+  logueado: boolean;
 
-  constructor(private auth$: NbAuthService, private http$: HttpClient) {
+  constructor(public auth$: NbAuthService, private http$: HttpClient) {
 
-  this.auth$.onTokenChange()
-      .subscribe((token: NbAuthJWTToken) => {
+    // this.logueado = false;
 
-        if (token.isValid()) {
-          this.userId = token.getPayload().sub; // here we receive a payload from the token and assigns it to our `user` variable
-          this.logueado = true ;
-          this.getUserById(this.userId).subscribe( (beUser: IUser) => {
-            this.user = beUser;
-            console.log(this.user);
-          } );
-          // console.log(this.userId);
-          // this.auth$.getToken().subscribe( rtaToken => console.log(rtaToken));
-        }
-      });
+    console.log(this.user);
+    this.escucharToken();
+
+    // this.auth$.onTokenChange()
+    //   .subscribe((token: NbAuthJWTToken) => {
+    //     if (token.isValid()) {
+    //       this.userId = token.getPayload().sub; // here we receive a payload from the token and assigns it to our `user` variable
+    //       this.logueado = true;
+    //       this.getUserById(this.userId).subscribe((beUser: IUser) => {
+    //         this.user = beUser;
+    //         console.log(this.user);
+    //       });
+    //     }
+    //   });
   }
 
-  probarToken() {
+  escucharToken() {
 
     this.auth$.onTokenChange()
       .subscribe((token: NbAuthJWTToken) => {
 
         if (token.isValid()) {
-          this.userId = token.getPayload(); // here we receive a payload from the token and assigns it to our `user` variable
+          this.userId = token.getPayload().sub; // here we receive a payload from the token and assigns it to our `user` variable
+          this.getUserById(this.userId).subscribe( beUser => {
+            this.user = beUser;
+            console.log(this.user);
+          });
+          // console.log(this.user);
         }
 
       });
   }
 
-  getLogin() {
-    return this.logueado;
-  }
+  // getUserFromToken() {
+  //   this.auth$.getToken().subscribe(
+  //     (token: NbAuthJWTToken) => {
+  //        this.extraerUserToken(token);
+  //     }
+  //   );
+  // }
 
-  getUserById( userId: string): Observable<IUser> {
+  // extraerUserToken(token: NbAuthJWTToken) {
+  //   if (token.isValid()) {
+  //     this.userId = token.getPayload().sub;
+  //   }
+  // }
+
+  getUserById(userId: string): Observable<IUser> {
     // ObjectId("5dc1846d7da5cf30542ea49a")
     const url = 'http://localhost:3000/users/' + userId;
     return this.http$.get(url);
@@ -54,11 +71,7 @@ export class LoginService {
   }
 
   logout() {
-    // TODO
-    this.auth$.logout('email').subscribe( result => {
-        console.log(result);
-        this.logueado = false;
-      },
-    );
+    this.auth$.logout('email')
+    .subscribe(result => this.logueado = false);
   }
 }

@@ -28,16 +28,13 @@ export const AUTH_OPTIONS: NbAuthOptions = {
                 alwaysFail: false,
                 endpoint: '/logout',
                 method: 'delete',
-                redirect: {
-                  success: '/landing',
-                  failure: null,
-                },
+                redirect: { success: '/landing', failure: null },
                 defaultErrors: ['Something went wrong, please try again.'],
                 defaultMessages: ['You have been successfully logged out.'],
-              },
-            errors:  {
+            },
+            errors: {
                 getter: (module: string, res: HttpErrorResponse) => {
-                    return [res.error.message];
+                     return [res.error.message];
                 },
             },
         }),

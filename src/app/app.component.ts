@@ -14,12 +14,12 @@ import { LoginService } from './services/login.service';
 export class AppComponent implements OnInit {
 
   constructor(private analytics: AnalyticsService, private login$: LoginService) {
+    this.login$.escucharToken();
   }
 
   ngOnInit() {
     // this.analytics.trackPageViews();
-    // this.login$.conectarServer().subscribe(
-    //   data => console.log(data),
-    // );
+    
+
   }
 }

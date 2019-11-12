@@ -1,3 +1,7 @@
+<div *ngIf="user">
+
+
+
 <nb-card>
   <!-- <nb-card-header class="profile-header">
     <h3>Mi perfil</h3>
@@ -16,10 +20,11 @@
         /> -->
       </div>
       <div class="col-sm-auto">
-        <img src="assets/images/rodri.png" alt="User img" class="profile-img" />
+        <!-- <img src="assets/images/rodri.png" alt="User img" class="profile-img" /> -->
+        <img [src]="user.foto" alt="User img" class="profile-img" />
       </div>
       <div class="col-auto align-self-end">
-        <h3>Rodrigo Alvarellos </h3>
+        <h3>{{user.nombre}} {{user.nombre}} </h3>
         <!-- <nb-icon icon="star-outline" status="basic"></nb-icon> -->
         <!-- <p>Developer</p> -->
       </div>
@@ -51,10 +56,10 @@
       </div>
       <div class="col-md-6">
         <ul>
-          <li>Nombre: Pepecito</li>
-          <li>Apellido: Alvarellos</li>
-          <li>Email: rodri.alvarellos@gmail.com</li>
-          <li>Rol: USER</li>
+          <li>Nombre: {{ user.nombre}}</li>
+          <li>Apellido: {{ user.apellido}}</li>
+          <li>Email: {{ user.email}}</li>
+          <li>Rol: {{user.role}}</li>
           <li>Otros: que se yo</li>
         </ul>
       </div>
@@ -95,4 +100,6 @@
       </nb-card-body>
     </nb-card>
   </div>
+</div>
+
 </div>

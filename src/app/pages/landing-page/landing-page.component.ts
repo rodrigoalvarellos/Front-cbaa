@@ -10,10 +10,10 @@ import { LoginService } from '../../services/login.service';
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor(private spinner$: NbSpinnerService, public login$: LoginService ) { }
+  constructor(private spinner$: NbSpinnerService, public login$: LoginService) { }
 
   ngOnInit() {
     this.spinner$.load();
   }
-
+  
 }
