@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { NbAuthService, NbAuthJWTToken } from '@nebular/auth';
 import { HttpClient } from '@angular/common/http';
 import { IUser } from '../classes/user.interface';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { resolve } from 'url';
 
 
 @Injectable({ providedIn: 'root' })
@@ -45,21 +46,30 @@ export class LoginService {
       });
   }
 
-  getUser() {
+  getUser(): Promise<IUser> {
 
-    let user = JSON.parse(localStorage.getItem('user'));
+    return new Promise((resolve, reject) => {
 
-    if (user) {
-      return user;
-    } else {
-      this.auth$.getToken().subscribe((token: NbAuthJWTToken) => {
-        user = JSON.parse(token.getPayload().data);
-        localStorage.setItem('user', token.getPayload().data);
-        return user;
-      },(error) => console.log('error'));
-      
-    }
+      let user = JSON.parse(localStorage.getItem('user'));
+
+      if (user) {
+        resolve(user);
+      } else {
+
+        this.auth$.getToken().subscribe((token: NbAuthJWTToken) => {
+          user = JSON.parse(token.getPayload().data);
+          localStorage.setItem('user', token.getPayload().data);
+          resolve(user);
+        }, (error) => reject(null));
+
+      }
+
+    });
+
   }
+
+
+
 
   // getUserFromToken() {
   //   this.auth$.getToken().subscribe(

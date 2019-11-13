@@ -13,19 +13,13 @@ export class VerPerfilComponent implements OnInit {
   user: IUser;
 
   constructor(public login$: LoginService) { }
-  ngOnInit() {
-    this.user = this.login$.getUser();
+  async ngOnInit() {
+
+    this.user = await this.login$.getUser();
+    // this.login$.getUser().then(user => this.user = user).catch(err => this.user);
+
   }
 
-  // getUser() {
-
-  //   this.auth$.getToken().subscribe((token: NbAuthJWTToken) => {
-
-  //     if (token.isValid) {
-  //       this.user = JSON.parse(token.getPayload().data);
-  //     }
-  //   });
-  // }
 
 
 
