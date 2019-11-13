@@ -16,8 +16,8 @@ export class LoginService {
 
     // this.logueado = false;
 
-    console.log(this.user);
-    this.escucharToken();
+    // console.log(this.user);
+    // this.escucharToken();
 
     // this.auth$.onTokenChange()
     //   .subscribe((token: NbAuthJWTToken) => {
@@ -37,16 +37,28 @@ export class LoginService {
     this.auth$.onTokenChange()
       .subscribe((token: NbAuthJWTToken) => {
 
-        if (token.isValid()) {
-          this.userId = token.getPayload().sub; // here we receive a payload from the token and assigns it to our `user` variable
-          this.getUserById(this.userId).subscribe( beUser => {
-            this.user = beUser;
-            console.log(this.user);
-          });
-          // console.log(this.user);
+        if (token.isValid && token.getPayload() !== null) {
+          this.user = JSON.parse(token.getPayload().data);
+          localStorage.setItem('user', token.getPayload().data);
         }
 
       });
+  }
+
+  getUser() {
+
+    let user = JSON.parse(localStorage.getItem('user'));
+
+    if (user) {
+      return user;
+    } else {
+      this.auth$.getToken().subscribe((token: NbAuthJWTToken) => {
+        user = JSON.parse(token.getPayload().data);
+        localStorage.setItem('user', token.getPayload().data);
+        return user;
+      },(error) => console.log('error'));
+      
+    }
   }
 
   // getUserFromToken() {
@@ -63,15 +75,17 @@ export class LoginService {
   //   }
   // }
 
-  getUserById(userId: string): Observable<IUser> {
-    // ObjectId("5dc1846d7da5cf30542ea49a")
-    const url = 'http://localhost:3000/users/' + userId;
-    return this.http$.get(url);
-
-  }
+  // getUserById(userId: string): Observable<IUser> {
+  //   // ObjectId("5dc1846d7da5cf30542ea49a")
+  //   const url = 'http://localhost:3000/users/' + userId;
+  //   return this.http$.get(url);
+  // }
 
   logout() {
     this.auth$.logout('email')
-    .subscribe(result => this.logueado = false);
+      .subscribe(result => {
+        this.logueado = false;
+        localStorage.removeItem('user');
+      });
   }
 }
