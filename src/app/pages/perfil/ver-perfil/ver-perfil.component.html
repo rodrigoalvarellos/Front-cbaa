@@ -21,7 +21,7 @@
           <img [src]="user.foto" alt="User img" class="profile-img" />
         </div>
         <div class="col-auto align-self-end">
-          <h3>{{ user.nombre }} {{ user.nombre }}</h3>
+          <h3>{{ user.nombre }} {{ user.apellido }}</h3>
           <!-- <nb-icon icon="star-outline" status="basic"></nb-icon> -->
           <!-- <p>Developer</p> -->
         </div>
@@ -49,10 +49,7 @@
         <div class="col-md-6">
           <p class="text-justify">
             <b>Acerca de mi:</b>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique
-            ex autem aliquam odio officia quisquam! Ratione porro, ducimus hic
-            quasi architecto assumenda dolore ipsam magni, fugiat voluptatum
-            quod optio. Provident.
+            {{user.descripcion}}
           </p>
         </div>
         <div class="col-md-6">

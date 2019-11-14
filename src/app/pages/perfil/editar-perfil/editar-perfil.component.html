@@ -1,1 +1,96 @@
-<p>editar-perfil works!</p>
+<form [formGroup]="userForm" (ngSubmit)="submitUserForm()">
+  <nb-card class="own-scroll">
+    <nb-card-header>
+      <h4>Actualizá tus datos</h4>
+    </nb-card-header>
+    <nb-card-body>
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <!-- Nombre Input Field -->
+          <div class="form-group">
+            <label for="nombreInput" class="label">Nombre</label>
+            <input
+              type="text"
+              nbInput
+              fullWidth
+              id="nombreInput"
+              formControlName="nombre"
+            />
+          </div>
+
+          <!-- Apellido Input Field -->
+          <div class="form-group">
+            <label for="apellidoInput" class="label">
+              Apellido
+            </label>
+            <input
+              type="text"
+              nbInput
+              fullWidth
+              id="nombreInput"
+              formControlName="apellido"
+            />
+          </div>
+
+          <!-- Descripcion Input Field -->
+          <div class="form-group">
+            <label for="inputDescripcion" class="label">Descripción</label>
+            <textarea
+              id="inputDescripcion"
+              nbInput
+              fullWidth
+              shape="semi-round"
+              rows="5"
+              formControlName="descripcion"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+
+          <p>Aca van las imagenes</p>
+
+        </div>
+      </div>
+
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente
+        pariatur ipsa aut a rerum ipsum atque odio. Aliquid, autem in. Molestias
+        error officia tempora ducimus eos placeat illum voluptates doloremque.
+      </p>
+
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente
+        pariatur ipsa aut a rerum ipsum atque odio. Aliquid, autem in. Molestias
+        error officia tempora ducimus eos placeat illum voluptates doloremque.
+      </p>
+
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente
+        pariatur ipsa aut a rerum ipsum atque odio. Aliquid, autem in. Molestias
+        error officia tempora ducimus eos placeat illum voluptates doloremque.
+      </p>
+
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente
+        pariatur ipsa aut a rerum ipsum atque odio. Aliquid, autem in. Molestias
+        error officia tempora ducimus eos placeat illum voluptates doloremque.
+      </p>
+
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente
+        pariatur ipsa aut a rerum ipsum atque odio. Aliquid, autem in. Molestias
+        error officia tempora ducimus eos placeat illum voluptates doloremque.
+      </p>
+    </nb-card-body>
+
+    <nb-card-footer>
+      <div class="d-flex justify-content-end">
+        <button type="button" class="mr-2" nbButton outline status="danger">
+          Cancelar
+        </button>
+        <button type="submit" nbButton>Actualizar</button>
+      </div>
+    </nb-card-footer>
+  </nb-card>
+</form>

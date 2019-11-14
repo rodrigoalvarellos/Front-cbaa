@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { LoginService } from '../../../services/login.service';
 import { IUser } from '../../../classes/user.interface';
 import { Observable } from 'rxjs';
@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
   selector: 'cba-ver-perfil',
   templateUrl: './ver-perfil.component.html',
   styleUrls: ['./ver-perfil.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VerPerfilComponent implements OnInit {
 
