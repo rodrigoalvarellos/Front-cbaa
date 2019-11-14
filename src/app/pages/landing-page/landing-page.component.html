@@ -40,7 +40,7 @@
     </div>
 
     <div *ngIf="(login$.auth$.isAuthenticated() | async )">
-      <button nbButton hero status="success" (click)="login$.logout();">Cerrar Sesión</button>
+      <button nbButton hero status="success" (click)="logout()">Cerrar Sesión</button>
     </div>
 
   </nb-layout-header>
@@ -86,7 +86,6 @@
           pariatur veniam expedita nam voluptate tenetur cupiditate at, 
           eos animi?
         </p>
-       
 
       </div>
 

@@ -1,101 +1,50 @@
 import { Injectable } from '@angular/core';
-import { NbAuthService, NbAuthJWTToken } from '@nebular/auth';
 import { HttpClient } from '@angular/common/http';
+import { NbAuthService, NbAuthJWTToken } from '@nebular/auth';
 import { IUser } from '../classes/user.interface';
 import { Observable, of } from 'rxjs';
-import { resolve } from 'url';
+import { map } from 'rxjs/operators';
 
 
 @Injectable({ providedIn: 'root' })
 export class LoginService {
 
-  userId: string;
-  user: IUser = {};
-  logueado: boolean;
-
-  constructor(public auth$: NbAuthService, private http$: HttpClient) {
-
-    // this.logueado = false;
-
-    // console.log(this.user);
-    // this.escucharToken();
-
-    // this.auth$.onTokenChange()
-    //   .subscribe((token: NbAuthJWTToken) => {
-    //     if (token.isValid()) {
-    //       this.userId = token.getPayload().sub; // here we receive a payload from the token and assigns it to our `user` variable
-    //       this.logueado = true;
-    //       this.getUserById(this.userId).subscribe((beUser: IUser) => {
-    //         this.user = beUser;
-    //         console.log(this.user);
-    //       });
-    //     }
-    //   });
-  }
+  constructor(public auth$: NbAuthService, private http$: HttpClient) { }
 
   escucharToken() {
 
-    this.auth$.onTokenChange()
-      .subscribe((token: NbAuthJWTToken) => {
+    return this.auth$.onTokenChange()
+      .pipe( map( (token: NbAuthJWTToken) => {
+          if (token.isValid && token.getPayload() !== null) {
+            const user = JSON.parse(token.getPayload().data);
+            localStorage.setItem('user', user);
+          }
 
-        if (token.isValid && token.getPayload() !== null) {
-          this.user = JSON.parse(token.getPayload().data);
-          localStorage.setItem('user', token.getPayload().data);
-        }
-
-      });
+        },
+      ));
   }
 
-  getUser(): Promise<IUser> {
 
-    return new Promise((resolve, reject) => {
+  getUser(): Observable<IUser> {
 
-      let user = JSON.parse(localStorage.getItem('user'));
+    let user = JSON.parse(localStorage.getItem('user'));
 
-      if (user) {
-        resolve(user);
-      } else {
-
-        this.auth$.getToken().subscribe((token: NbAuthJWTToken) => {
+    if (user) {
+      return of(user);
+    } else {
+      return this.auth$.getToken().pipe(
+        map((token: NbAuthJWTToken) => {
           user = JSON.parse(token.getPayload().data);
           localStorage.setItem('user', token.getPayload().data);
-          resolve(user);
-        }, (error) => reject(null));
-
-      }
-
-    });
-
+          return user;
+        }, (error: any) => null),
+      );
+    }
   }
 
 
-
-
-  // getUserFromToken() {
-  //   this.auth$.getToken().subscribe(
-  //     (token: NbAuthJWTToken) => {
-  //        this.extraerUserToken(token);
-  //     }
-  //   );
-  // }
-
-  // extraerUserToken(token: NbAuthJWTToken) {
-  //   if (token.isValid()) {
-  //     this.userId = token.getPayload().sub;
-  //   }
-  // }
-
-  // getUserById(userId: string): Observable<IUser> {
-  //   // ObjectId("5dc1846d7da5cf30542ea49a")
-  //   const url = 'http://localhost:3000/users/' + userId;
-  //   return this.http$.get(url);
-  // }
-
   logout() {
-    this.auth$.logout('email')
-      .subscribe(result => {
-        this.logueado = false;
-        localStorage.removeItem('user');
-      });
+    return this.auth$.logout('email')
+      .pipe(map( result => localStorage.removeItem('user') ));
   }
 }

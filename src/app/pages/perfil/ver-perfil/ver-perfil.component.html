@@ -1,105 +1,105 @@
-<div *ngIf="user">
-
-
-
-<nb-card>
-  <!-- <nb-card-header class="profile-header">
+<ng-container *ngIf="(user$ | async) as user">
+  <nb-card>
+    <!-- <nb-card-header class="profile-header">
     <h3>Mi perfil</h3>
     <span class="spacer"></span>
     <button class="float-right" nbButton outline status="warning" size="small">
       Actualizá tus datos
     </button>
   </nb-card-header> -->
-  <nb-card-body>
-    <div class="row" style="width: 100%; padding:0;margin: 0;">
-      <div class="cover-img col-12">
-        <!-- <img
+    <nb-card-body>
+      <div class="row" style="width: 100%; padding:0;margin: 0;">
+        <div class="cover-img col-12">
+          <!-- <img
           src="assets/images/backgrounds/spash_cover.jpg"
           alt="Cover"
           class="cover-img"
         /> -->
+        </div>
+        <div class="col-sm-auto">
+          <!-- <img src="assets/images/rodri.png" alt="User img" class="profile-img" /> -->
+          <img [src]="user.foto" alt="User img" class="profile-img" />
+        </div>
+        <div class="col-auto align-self-end">
+          <h3>{{ user.nombre }} {{ user.nombre }}</h3>
+          <!-- <nb-icon icon="star-outline" status="basic"></nb-icon> -->
+          <!-- <p>Developer</p> -->
+        </div>
+        <div class="spacer"></div>
+        <div class="col-auto align-self-end">
+          <button
+            nbButton
+            outline
+            status="success"
+            [routerLink]="['/pages/perfil/editar-perfil']"
+          >
+            Actualizá tus datos
+          </button>
+        </div>
       </div>
-      <div class="col-sm-auto">
-        <!-- <img src="assets/images/rodri.png" alt="User img" class="profile-img" /> -->
-        <img [src]="user.foto" alt="User img" class="profile-img" />
+    </nb-card-body>
+  </nb-card>
+
+  <nb-card>
+    <nb-card-body>
+      <div class="row">
+        <div class="col-12">
+          <h4>Mis datos</h4>
+        </div>
+        <div class="col-md-6">
+          <p class="text-justify">
+            <b>Acerca de mi:</b>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique
+            ex autem aliquam odio officia quisquam! Ratione porro, ducimus hic
+            quasi architecto assumenda dolore ipsam magni, fugiat voluptatum
+            quod optio. Provident.
+          </p>
+        </div>
+        <div class="col-md-6">
+          <ul>
+            <li>Nombre: {{ user.nombre }}</li>
+            <li>Apellido: {{ user.apellido }}</li>
+            <li>Email: {{ user.email }}</li>
+            <li>Rol: {{ user.role }}</li>
+            <li>Otros: que se yo</li>
+          </ul>
+        </div>
       </div>
-      <div class="col-auto align-self-end">
-        <h3>{{user.nombre}} {{user.nombre}} </h3>
-        <!-- <nb-icon icon="star-outline" status="basic"></nb-icon> -->
-        <!-- <p>Developer</p> -->
-      </div>
-      <div class="spacer"></div>
-      <div class="col-auto align-self-end">
-        <button nbButton outline status="success" [routerLink]="['/pages/perfil/editar-perfil']">
-          Actualizá tus datos
-        </button>
-      </div>
+    </nb-card-body>
+  </nb-card>
+
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <nb-card>
+        <nb-card-header>
+          Interesas:
+        </nb-card-header>
+        <nb-card-body>
+          <ul>
+            <li>Deportes</li>
+            <li>Salud</li>
+            <li>Eventos</li>
+            <li>Musica</li>
+            <li>Solidarios</li>
+          </ul>
+        </nb-card-body>
+      </nb-card>
     </div>
-  </nb-card-body>
-</nb-card>
-
-<nb-card>
-  <nb-card-body>
-    <div class="row">
-      <div class="col-12">
-        <h4>Mis datos</h4>
-      </div>
-      <div class="col-md-6">
-        
-        <p class="text-justify">
-          <b>Acerca de mi:</b>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique ex
-          autem aliquam odio officia quisquam! Ratione porro, ducimus hic quasi
-          architecto assumenda dolore ipsam magni, fugiat voluptatum quod optio.
-          Provident.
-        </p>
-      </div>
-      <div class="col-md-6">
-        <ul>
-          <li>Nombre: {{ user.nombre}}</li>
-          <li>Apellido: {{ user.apellido}}</li>
-          <li>Email: {{ user.email}}</li>
-          <li>Rol: {{user.role}}</li>
-          <li>Otros: que se yo</li>
-        </ul>
-      </div>
+    <div class="col-sm-12 col-md-6">
+      <nb-card>
+        <nb-card-header>
+          Siguiendo a:
+        </nb-card-header>
+        <nb-card-body>
+          <ul>
+            <li>Cilsa</li>
+            <li>CBA-Accesible</li>
+            <li>Empate FC</li>
+            <li>X+Inclusion</li>
+            <li>Cumelen</li>
+          </ul>
+        </nb-card-body>
+      </nb-card>
     </div>
-  </nb-card-body>
-</nb-card>
-
-<div class="row">
-  <div class="col-sm-12 col-md-6">
-    <nb-card>
-      <nb-card-header>
-        Interesas:
-      </nb-card-header>
-      <nb-card-body>
-        <ul>
-          <li>Deportes</li>
-          <li>Salud</li>
-          <li>Eventos</li>
-          <li>Musica</li>
-          <li>Solidarios</li>
-        </ul>
-      </nb-card-body>
-    </nb-card>
   </div>
-  <div class="col-sm-12 col-md-6">
-    <nb-card>
-      <nb-card-header>
-        Siguiendo a:
-      </nb-card-header>
-      <nb-card-body>
-        <ul>
-          <li>Cilsa</li>
-          <li>CBA-Accesible</li>
-          <li>Empate FC</li>
-          <li>X+Inclusion</li>
-          <li>Cumelen</li>
-        </ul>
-      </nb-card-body>
-    </nb-card>
-  </div>
-</div>
-
-</div>
+</ng-container>

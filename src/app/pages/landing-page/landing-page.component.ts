@@ -15,5 +15,10 @@ export class LandingPageComponent implements OnInit {
   ngOnInit() {
     this.spinner$.load();
   }
-  
+
+  logout() {
+    const logout = this.login$.logout()
+      .subscribe(res => logout.unsubscribe());
+  }
+
 }

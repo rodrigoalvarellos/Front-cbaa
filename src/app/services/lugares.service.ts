@@ -26,14 +26,6 @@ export class LugaresService {
         this.marcadores = data.map(it => {
 
           return new Marcador(it.lat, it.lng, it.color, it.img, it.titulo, it.descripcion);
-          // return {
-          //   lat: it.lat,
-          //   lng: it.lng,
-          //   color: it.color,
-          //   img: it.img,
-          //   titulo: it.titulo,
-          //   descripcion: it.descripcion,
-          // };
         });
 
         return this.marcadores;
@@ -42,15 +34,4 @@ export class LugaresService {
 
     ));
   }
-
-  // conectarServer() {
-
-  //   const url = 'http://localhost:3000/users';
-  //   return this.http$.get(url).pipe(map(
-  //     (data: any) => data,
-  //   ));
-
-  // }
-
-
 }
