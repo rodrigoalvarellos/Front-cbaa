@@ -51,11 +51,11 @@
           <br>
 
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-sm-12 col-md-6">
               <img src="assets/images/rodri.png" alt="Foto de perfil" class="profile-photo">
 
             </div>
-            <div class="col-md-6">
+            <div class="col-sm-12 col-md-6">
               <label
                 *ngIf="uploader.queue.length === 0"
                 for="uploader-input"
@@ -74,41 +74,43 @@
                 id="uploader-input"
                 style="display:none"
               />
+              <ul>
+                  <li *ngFor="let item of uploader.queue">
+                    {{ item?.file?.name }}
+                    <img [src]="previewPath" style="width: 50px; height: 50px;">
+      
+                  </li>
+                </ul>
+      
+                <!-- <button
+                  type="button"
+                  nbButton
+                  outline
+                  status="success"
+                  (click)="uploader.uploadAll()"
+                  [disabled]="!uploader.getNotUploadedItems().length"
+                >
+                  Upload Files
+                </button> -->
+      
+                <button
+                  type="button"
+                  nbButton
+                  outline
+                  status="danger"
+                  (click)="uploader.clearQueue()"
+                  [disabled]="!uploader.queue.length"
+                  *ngIf="uploader.queue.length !== 0"
+                >
+                  Quitar imagen
+                </button>
 
 
             </div>
           </div>
 
           
-          <ul>
-            <li *ngFor="let item of uploader.queue">
-              {{ item?.file?.name }}
-              <img [src]="previewPath" style="width: 50px; height: 50px;">
-
-            </li>
-          </ul>
-
-          <button
-            type="button"
-            nbButton
-            outline
-            status="success"
-            (click)="uploader.uploadAll()"
-            [disabled]="!uploader.getNotUploadedItems().length"
-          >
-            Upload Files
-          </button>
-
-          <button
-            type="button"
-            nbButton
-            outline
-            status="danger"
-            (click)="uploader.clearQueue()"
-            [disabled]="!uploader.queue.length"
-          >
-            Remove all
-          </button>
+          
         </div>
       </div>    
       
