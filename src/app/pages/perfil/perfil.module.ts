@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ThemeModule } from '../../@theme/theme.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { PerfilComponent } from './perfil.component';
 import { PerfilRoutingModule } from './perfil-routing.module';
@@ -19,6 +20,7 @@ import { VerPerfilComponent } from './ver-perfil/ver-perfil.component';
     PerfilRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    FileUploadModule,
   ],
 })
 export class PerfilModule { }
