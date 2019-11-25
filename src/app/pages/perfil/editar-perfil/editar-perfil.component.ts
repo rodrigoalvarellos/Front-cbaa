@@ -5,6 +5,8 @@ import { FormValidationService } from '../../../services/forms-validations.servi
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { DomSanitizer } from '@angular/platform-browser';
+import { LoginService } from '../../../services/login.service';
+import { IUser } from '../../../classes/user.interface';
 
 @Component({
   selector: 'cba-editar-perfil',
@@ -15,21 +17,32 @@ export class EditarPerfilComponent implements OnInit, OnDestroy {
 
   private unsubscribe$ = new Subject<void>();
 
+  user: IUser;
+
   // File Upload configs
   URL: string = 'path_to_api';
   uploader: FileUploader;
-  hasDropZoneOver: boolean;  
+  hasDropZoneOver: boolean;
   response: string;
   previewPath: any;
 
   userForm: FormGroup;
 
-  constructor(private fb: FormBuilder, public form$: FormValidationService, private sanitizer: DomSanitizer) {
+  constructor(
+    public login$: LoginService,
+    private fb: FormBuilder,
+    public form$: FormValidationService,
+    private sanitizer: DomSanitizer) {
+
     this.createFileUpload();
   }
 
   ngOnInit() {
-    this.crearUserForm();
+
+    this.login$.getUser().subscribe( ( user: IUser) => {
+      this.user = user;
+      this.crearUserForm(user);
+    } );
   }
 
   ngOnDestroy(): void {
@@ -37,12 +50,13 @@ export class EditarPerfilComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 
-  crearUserForm() {
+  // Form Methods
+  crearUserForm(user: IUser) {
 
     this.userForm = this.fb.group({
-      nombre: new FormControl('Rodrigo', [Validators.required]),
-      apellido: new FormControl('Alvarellos', [Validators.required]),
-      descripcion: new FormControl('Una descripcion'),
+      nombre: new FormControl( user.nombre, [Validators.required]),
+      apellido: new FormControl( user.apellido, [Validators.required]),
+      descripcion: new FormControl( user.descripcion),
       foto: new FormControl('url'),
     });
 
@@ -50,8 +64,10 @@ export class EditarPerfilComponent implements OnInit, OnDestroy {
 
   submitUserForm() {
     // TODO - Implementar
+    console.log('Submiteado!');
   }
-
+  
+  // File Upload Methods
   createFileUpload() {
 
     this.uploader = new FileUploader({
