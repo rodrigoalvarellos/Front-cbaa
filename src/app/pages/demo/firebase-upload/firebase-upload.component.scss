@@ -1,0 +1,30 @@
+.dropzone { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; 
+    height: 300px;
+    border: 2px dashed #f16624;
+    border-radius: 5px;
+    background: #FAFAFA;
+    margin: 10px 0;
+
+    &.hovering {
+        background: #F5F5F5;
+        border: 2px solid #f16624;
+        color: #dadada !important;
+    }
+}
+
+// progress::-webkit-progress-value {
+//     transition: width 0.1s ease;
+// }
+
+nb-progress-bar {
+    flex: 1;
+    transition: width 0.1s ease;
+}
+
+img {
+    width: 250px;
+}

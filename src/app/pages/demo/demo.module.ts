@@ -12,6 +12,8 @@ import { NbDialogModule } from '@nebular/theme';
 import { DialogContentComponent } from './modals/dialog-content/dialog-content.component';
 import { ToastersComponent } from './toasters/toasters.component';
 import { MapsComponent } from './maps/maps.component';
+import { FirebaseUploadComponent } from './firebase-upload/firebase-upload.component';
+import { SharedModule } from '../../shared/shared.module';
 @NgModule({
   declarations: [
     MainComponent,
@@ -21,8 +23,10 @@ import { MapsComponent } from './maps/maps.component';
     DialogContentComponent,
     ToastersComponent,
     MapsComponent,
+    FirebaseUploadComponent,
   ],
   imports: [
+    SharedModule,
     FormsModule,
     ReactiveFormsModule,
     DemoRoutingModule,

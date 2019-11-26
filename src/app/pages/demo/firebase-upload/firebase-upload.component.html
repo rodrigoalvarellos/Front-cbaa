@@ -1,0 +1,19 @@
+
+<div class="row">
+    <div class="col-6">
+        <cba-fire-image-upload
+          path="otros"
+          (previewURL)="verPreviewURL($event)"
+          (uploadURL)="verUploadedURL($event)"
+          (reset)="reset()"
+        ></cba-fire-image-upload>
+        
+    </div>
+    <div class="col-6">
+        <img *ngIf="preview" [src]="preview" alt="" style="width: 100px;height: 100px;">
+        <img *ngIf="updateImage" [src]="updateImage" alt="" style="width: 100px;height: 100px;">
+
+    </div>
+</div>
+
+

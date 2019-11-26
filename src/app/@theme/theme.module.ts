@@ -18,6 +18,7 @@ import {
   NbCheckboxModule,
   NbRadioModule,
   NbListModule,
+  NbProgressBarModule,
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NbSecurityModule } from '@nebular/security';
@@ -67,7 +68,7 @@ const NB_MODULES = [
   NbCheckboxModule,
   NbRadioModule,
   NbListModule,
-
+  NbProgressBarModule,
 ];
 const COMPONENTS = [
   SwitcherComponent,

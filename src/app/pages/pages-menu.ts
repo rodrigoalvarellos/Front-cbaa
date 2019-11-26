@@ -45,6 +45,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Maps',
         link: '/pages/demo/maps',
       },
+      {
+        title: 'Fire Upload',
+        link: '/pages/demo/fire-upload',
+      },
     ],
   },
   // {

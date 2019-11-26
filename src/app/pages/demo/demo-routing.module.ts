@@ -8,6 +8,7 @@ import { DemoComponent } from './demo.component';
 import { ModalsComponent } from './modals/modals.component';
 import { ToastersComponent } from './toasters/toasters.component';
 import { MapsComponent } from './maps/maps.component';
+import { FirebaseUploadComponent } from './firebase-upload/firebase-upload.component';
 
 const routes: Routes = [
     {
@@ -33,6 +34,10 @@ const routes: Routes = [
         {
           path: 'maps',
           component: MapsComponent,
+        },
+        {
+          path: 'fire-upload',
+          component: FirebaseUploadComponent,
         },
       ],
     },

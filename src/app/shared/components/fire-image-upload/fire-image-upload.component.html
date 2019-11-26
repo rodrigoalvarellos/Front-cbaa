@@ -1,0 +1,92 @@
+<label
+  dropZone
+  class="dropzone"
+  for="uploader-input"
+  (hovered)="toggleHover($event)"
+  (dropped)="getFile($event)"
+  [class.hovering]="isHovering"
+  *ngIf="!file"
+>
+  <h5 class="text-center text-secondary">
+    Arrastra aqui tu foto o hace click para seleccionar una
+  </h5>
+</label>
+
+<input
+  type="file"
+  id="uploader-input"
+  style="display:none"
+  (change)="getFile($event.target.files)"
+  #inputFile
+/>
+
+<nb-card *ngIf="file">
+  <nb-card-body>
+    <div *ngIf="previewPath" class="row align-content-center">
+      <div class="col-auto">
+        <img [src]="previewPath" style="width: 100px; height: 100px;" />
+      </div>
+
+      <div class="col-auto align-self-center">
+        <button
+          class="ml-1"
+          nbButton
+          hero
+          status="success"
+          (click)="startUpload(file)"
+        >
+          Upload File
+        </button>
+        <button
+          class="ml-1"
+          nbButton
+          hero
+          status="danger"
+          (click)="resetFile()"
+        >
+          Delete File
+        </button>
+      </div>
+    </div>
+
+    <nb-progress-bar
+      *ngIf="percentage | async as pct"
+      [value]="pct"
+      style="width: 100%; margin-top: 20px;"
+    >
+      {{ pct | number }}%
+    </nb-progress-bar>
+  </nb-card-body>
+</nb-card>
+
+<div *ngIf="snapshot | async as snap">
+  {{ snap.bytesTransferred | fileSize }} of {{ snap.totalBytes | fileSize }}
+
+  <div *ngIf="downloadURL | async as url">
+    <h3>Results!</h3>
+    <img [src]="url" /><br />
+    <a [href]="url" target="_blank" rel="noopener">Download Me!</a>
+  </div>
+
+  <button
+    (click)="task.pause()"
+    class="button is-warning"
+    [disabled]="!isActive(snap)"
+  >
+    Pause
+  </button>
+  <button
+    (click)="task.cancel()"
+    class="button is-danger"
+    [disabled]="!isActive(snap)"
+  >
+    Cancel
+  </button>
+  <button
+    (click)="task.resume()"
+    class="button is-info"
+    [disabled]="!(snap?.state === 'paused')"
+  >
+    Resume
+  </button>
+</div>
