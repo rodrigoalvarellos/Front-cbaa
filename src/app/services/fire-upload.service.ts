@@ -63,7 +63,7 @@ export class FireUploadService {
   }
 
   deleteFile(link: string) {
-    return this.storage.storage.refFromURL(link).delete()
+    this.storage.storage.refFromURL(link).delete()
       .then( () => this.toastr$.showToast('warning', 'Imagen eliminada', 'La imagen ha sido eliminada correctamente'))
       .catch( err => this.toastr$.showToast('danger', 'Error', err.message));
   }

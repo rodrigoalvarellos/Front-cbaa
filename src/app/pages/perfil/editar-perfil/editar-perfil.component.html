@@ -5,7 +5,7 @@
     </nb-card-header>
     <nb-card-body>
       <div class="row">
-        <div class="col-sm-12 col-md-6">
+        <div class="col-sm-12 col-md-7" >
           <!-- Nombre Input Field -->
           <div class="form-group">
             <label for="nombreInput" class="label">Nombre</label>
@@ -46,74 +46,34 @@
           </div>
         </div>
 
-        <div class="col-sm-12 col-md-6">
-          <label class="label">Tu foto de perfil</label>
-          <br>
+        <div class="col-sm-12 col-md-5">
+          <!-- <label class="label">Tu foto de perfil</label> -->
+          <br />
 
-          <div class="row">
-            <div class="col-sm-12 col-md-6">
-              <img [src]=" user.foto || 'assets/images/no-image.jpg'" alt="Foto de perfil" class="profile-photo">
+          <div class="row justify-content-center">
 
-            </div>
-            <div class="col-sm-12 col-md-6">
-              <label
-                *ngIf="uploader.queue.length === 0"
-                for="uploader-input"
-                ng2FileDrop           
-                [ngClass]="{ 'nv-file-over': hasDropZoneOver }"
-                (fileOver)="fileOverDropZone($event)"
-                [uploader]="uploader"
-                class="well my-drop-zone"
-                >Arrastra aqui tu foto o clickea para seleccionar una del
-                explorador</label
-              >
-              <input
-                type="file"
-                ng2FileSelect
-                [uploader]="uploader"
-                id="uploader-input"
-                style="display:none"
+            <div *ngIf="!cambiarFoto">
+              <img
+                [src]="user.foto || 'assets/images/no-image.jpg'"
+                alt="Foto de perfil"
+                class="profile-photo"
               />
-              <ul>
-                  <li *ngFor="let item of uploader.queue">
-                    {{ item?.file?.name }}
-                    <img [src]="previewPath" style="width: 50px; height: 50px;">
-      
-                  </li>
-                </ul>
-      
-                <!-- <button
-                  type="button"
-                  nbButton
-                  outline
-                  status="success"
-                  (click)="uploader.uploadAll()"
-                  [disabled]="!uploader.getNotUploadedItems().length"
-                >
-                  Upload Files
-                </button> -->
-      
-                <button
-                  type="button"
-                  nbButton
-                  outline
-                  status="danger"
-                  (click)="uploader.clearQueue()"
-                  [disabled]="!uploader.queue.length"
-                  *ngIf="uploader.queue.length !== 0"
-                >
-                  Quitar imagen
-                </button>
+              <button type="button" class="mt-1" nbButton hero status="info" size="tiny" fullWidth (click)="cambiarFoto=true">Cambiar Foto</button>
+            </div>
+
+            <div class="col-sm-12" *ngIf="cambiarFoto">
+
+              <cba-image-upload>
+                <h5 class="text-center text-secondary">Clickea o arrastra la foto</h5>
+              </cba-image-upload>
+              <button type="button" class="mt-1" nbButton hero status="danger" size="tiny" fullWidth (click)="cambiarFoto=false">Cancelar</button>
 
 
             </div>
-          </div>
 
-          
-          
+          </div>
         </div>
-      </div>    
-      
+      </div>
     </nb-card-body>
 
     <nb-card-footer>

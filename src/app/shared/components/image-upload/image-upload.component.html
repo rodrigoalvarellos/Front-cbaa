@@ -6,9 +6,11 @@
   (dropped)="getFile($event)"
   [class.hovering]="isHovering"  
 >
-  <h5 class="text-center text-secondary">
-    Arrastra aqui tu foto o hace click para seleccionar una
-  </h5>
+<div>
+  <ng-content></ng-content>
+
+</div>
+
 </label>
 
 <input
