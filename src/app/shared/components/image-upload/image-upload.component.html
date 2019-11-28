@@ -1,0 +1,21 @@
+<label
+  dropZone
+  class="dropzone"
+  for="uploader-input"
+  (hovered)="toggleHover($event)"
+  (dropped)="getFile($event)"
+  [class.hovering]="isHovering"  
+>
+  <h5 class="text-center text-secondary">
+    Arrastra aqui tu foto o hace click para seleccionar una
+  </h5>
+</label>
+
+<input
+  type="file"
+  id="uploader-input"
+  style="display:none"
+  (change)="getFile($event.target.files)"
+  #inputFile
+/>
+

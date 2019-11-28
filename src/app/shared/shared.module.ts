@@ -6,12 +6,12 @@ import { ListadoLugaresComponent } from './components/listado-lugares/listado-lu
 import { AgmCoreModule } from '@agm/core';
 import { DropZoneDirective } from '../directives/drop-zone.directive';
 import { FileSizePipe } from '../pipes/format-file-size.pipe';
-import { FireImageUploadComponent } from './components/fire-image-upload/fire-image-upload.component';
+import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 
 const COMPONENTS = [
   MapaComponent,
   ListadoLugaresComponent,
-  FireImageUploadComponent,
+  ImageUploadComponent,
 ];
 
 const PIPES = [

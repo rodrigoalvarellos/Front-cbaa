@@ -1,19 +1,60 @@
 
+<h3>Usando componente y servicio</h3>
+
 <div class="row">
+    
     <div class="col-6">
-        <cba-fire-image-upload
-          path="otros"
-          (previewURL)="verPreviewURL($event)"
-          (uploadURL)="verUploadedURL($event)"
-          (reset)="reset()"
-        ></cba-fire-image-upload>
-        
-    </div>
-    <div class="col-6">
-        <img *ngIf="preview" [src]="preview" alt="" style="width: 100px;height: 100px;">
-        <img *ngIf="updateImage" [src]="updateImage" alt="" style="width: 100px;height: 100px;">
+
+        <cba-image-upload (previewURL)="verPreviewURL($event)" (fileSelected)="catchFile($event)"></cba-image-upload>
+        <button class="mr-3" nbButton hero status="success" (click)="uploadToFire()" [disabled]="!file">Upload</button>
+        <button class="mr-3" nbButton hero status="warning" (click)="fireUpload.deleteFile(uploadedURL)" [disabled]="!uploadedURL">Delete</button>
 
     </div>
+    
+    <div class="col-6">
+
+      <img *ngIf="preview" [src]="preview" alt="" style="width: 100%;">
+      <br>
+      <img *ngIf="uploadedURL" [src]="uploadedURL" alt="" style="width: 100%;">
+
+      
+    </div>
+    
+  
 </div>
+
+
+
+<div *ngIf="fireUpload.snapshot | async as snap">
+    {{ snap.bytesTransferred | fileSize }} of {{ snap.totalBytes | fileSize }}
+  
+    <div *ngIf="fireUpload.downloadURL | async as url">
+      <h3>Results!</h3>
+      <img [src]="url" /><br />
+      <a [href]="url" target="_blank" rel="noopener">Download Me!</a>
+    </div>
+  
+    <button
+      (click)="fireUpload.task.pause()"
+      class="button is-warning"
+      [disabled]="!fireUpload.isActive(snap)"
+    >
+      Pause
+    </button>
+    <button
+      (click)="fireUpload.task.cancel()"
+      class="button is-danger"
+      [disabled]="!fireUpload.isActive(snap)"
+    >
+      Cancel
+    </button>
+    <button
+      (click)="fireUpload.task.resume()"
+      class="button is-info"
+      [disabled]="!(snap?.state === 'paused')"
+    >
+      Resume
+    </button>
+  </div>
 
 
