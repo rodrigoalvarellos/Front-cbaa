@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 export class VerPerfilComponent implements OnInit {
 
   user$: Observable<IUser>;
+  fotoVaciaUrl = 'assets/images/no-image.jpg';
 
   constructor(public login$: LoginService) { }
 

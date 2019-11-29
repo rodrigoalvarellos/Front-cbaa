@@ -18,10 +18,10 @@
         </div>
         <div class="col-sm-auto">
           <!-- <img src="assets/images/rodri.png" alt="User img" class="profile-img" /> -->
-          <img [src]="user.foto" alt="User img" class="profile-img" />
+          <img [src]="user.foto || fotoVaciaUrl" alt="User img" class="profile-img" />
         </div>
         <div class="col-auto align-self-end">
-          <h3>{{ user.nombre }} {{ user.apellido }}</h3>
+          <h3>{{ user.nombre || 'Actualiza tu perfil !!! 👉🏻' }} {{ user.apellido || '' }}</h3>
           <!-- <nb-icon icon="star-outline" status="basic"></nb-icon> -->
           <!-- <p>Developer</p> -->
         </div>

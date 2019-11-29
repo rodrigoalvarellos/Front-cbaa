@@ -8,6 +8,7 @@
         <cba-image-upload (previewURL)="verPreviewURL($event)" (fileSelected)="catchFile($event)">
           <h5>Drag & Drop</h5>
         </cba-image-upload>
+
         <button class="mr-3" nbButton hero status="success" (click)="uploadToFire()" [disabled]="!file">Upload</button>
         <button class="mr-3" nbButton hero status="warning" (click)="fireUpload.deleteFile(uploadedURL)" [disabled]="!uploadedURL">Delete</button>
 
@@ -15,17 +16,13 @@
     
     <div class="col-6">
 
-      <img *ngIf="preview" [src]="preview" alt="" style="width: 100%;">
-      <br>
+      <img *ngIf="preview" [src]="preview" alt="" style="width: 100%;"><br>      
       <img *ngIf="uploadedURL" [src]="uploadedURL" alt="" style="width: 100%;">
-
       
     </div>
     
   
 </div>
-
-
 
 <div *ngIf="fireUpload.snapshot | async as snap">
     {{ snap.bytesTransferred | fileSize }} of {{ snap.totalBytes | fileSize }}
