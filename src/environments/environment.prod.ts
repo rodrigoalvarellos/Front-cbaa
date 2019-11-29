@@ -5,6 +5,7 @@
  */
 export const environment = {
   production: true,
+  BASE_API_URL : 'http://localhost:3000',
   firebase: {
     apiKey: 'AIzaSyB_-uMT7qqkLFptaVxpq0GbzKfJmpbFnXY',
     authDomain: 'cba-accesible.firebaseapp.com',

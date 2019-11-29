@@ -42,6 +42,10 @@ export class LoginService {
     }
   }
 
+  setUser(user: IUser) {
+    localStorage.setItem('user', JSON.stringify(user));
+  }
+
 
   logout() {
     return this.auth$.logout('email')

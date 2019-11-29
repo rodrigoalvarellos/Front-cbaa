@@ -65,7 +65,7 @@ import { AuthModule } from './auth/auth.module';
   exports: [
     AngularFirestoreModule,
     AngularFireStorageModule,
-  ]
+  ],
 })
 export class AppModule {
 }

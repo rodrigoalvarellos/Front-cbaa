@@ -6,11 +6,11 @@
 
 nb-card {&.own-scroll {height: calc(100vh - 160px);}}
 
-.profile-photo {
+.profile-photo {  
   display:block;
-  margin:auto;
-  // height: 75%;
+  margin:auto; 
   max-width: 100%;
+  max-height: 300px;
   border-radius: 15px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }

@@ -19,6 +19,7 @@ import {
   NbRadioModule,
   NbListModule,
   NbProgressBarModule,
+  NbSpinnerModule,
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NbSecurityModule } from '@nebular/security';
@@ -69,6 +70,7 @@ const NB_MODULES = [
   NbRadioModule,
   NbListModule,
   NbProgressBarModule,
+  NbSpinnerModule,
 ];
 const COMPONENTS = [
   SwitcherComponent,

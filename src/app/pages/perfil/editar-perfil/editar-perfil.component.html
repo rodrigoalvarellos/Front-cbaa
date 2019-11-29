@@ -1,5 +1,5 @@
 <form [formGroup]="userForm" (ngSubmit)="submitUserForm()">
-  <nb-card class="own-scroll">
+  <nb-card class="own-scroll" [nbSpinner]="guardando" nbSpinnerStatus="primary" nbSpinnerSize="giant">
     <nb-card-header>
       <h4>Actualizá tus datos</h4>
     </nb-card-header>
@@ -15,6 +15,7 @@
               fullWidth
               id="nombreInput"
               formControlName="nombre"
+              [status]=" userFormErrors.nombre? 'danger': 'basic'"
             />
           </div>
 
@@ -29,6 +30,7 @@
               fullWidth
               id="nombreInput"
               formControlName="apellido"
+              [status]=" userFormErrors.apellido? 'danger': 'basic'"
             />
           </div>
 
@@ -52,22 +54,21 @@
 
           <div class="row justify-content-center">
 
-            <div *ngIf="!cambiarFoto">
+            <div *ngIf="!cambiarFoto" style="padding: 0 20px;">
               <img
-                [src]="user.foto || 'assets/images/no-image.jpg'"
+                [src]="retratoImg"
                 alt="Foto de perfil"
                 class="profile-photo"
               />
-              <button type="button" class="mt-1" nbButton hero status="info" size="tiny" fullWidth (click)="cambiarFoto=true">Cambiar Foto</button>
+              <button type="button" class="mt-2" nbButton outline status="success" size="tiny" shape="round" fullWidth (click)="cambiarFoto=true">Cambiar Foto</button>
             </div>
 
             <div class="col-sm-12" *ngIf="cambiarFoto">
 
-              <cba-image-upload>
-                <h5 class="text-center text-secondary">Clickea o arrastra la foto</h5>
+              <cba-image-upload (fileSelected)="catchFotoSubida($event)" (previewURL)="catchPreviewUrl($event)">
+                <h5 class="text-center text-secondary">Clickea o arrastrá tu foto</h5>
               </cba-image-upload>
               <button type="button" class="mt-1" nbButton hero status="danger" size="tiny" fullWidth (click)="cambiarFoto=false">Cancelar</button>
-
 
             </div>
 
@@ -78,7 +79,7 @@
 
     <nb-card-footer>
       <div class="d-flex justify-content-end">
-        <button type="button" class="mr-2" nbButton outline status="danger">
+        <button type="button" class="mr-2" nbButton outline status="danger" [routerLink]="['/pages/perfil/ver-perfil']">
           Cancelar
         </button>
         <button type="submit" nbButton>Actualizar</button>
