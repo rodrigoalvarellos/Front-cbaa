@@ -5,7 +5,9 @@
     
     <div class="col-6">
 
-        <cba-image-upload (previewURL)="verPreviewURL($event)" (fileSelected)="catchFile($event)"></cba-image-upload>
+        <cba-image-upload (previewURL)="verPreviewURL($event)" (fileSelected)="catchFile($event)">
+          <h5>Drag & Drop</h5>
+        </cba-image-upload>
         <button class="mr-3" nbButton hero status="success" (click)="uploadToFire()" [disabled]="!file">Upload</button>
         <button class="mr-3" nbButton hero status="warning" (click)="fireUpload.deleteFile(uploadedURL)" [disabled]="!uploadedURL">Delete</button>
 
