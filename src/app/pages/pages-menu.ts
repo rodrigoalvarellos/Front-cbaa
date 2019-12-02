@@ -17,9 +17,29 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/lugares',
   },
   {
+    title: 'Eventos',
+    icon: 'star-outline',
+    link: '/pages/eventos',
+  },
+  {
+    title: 'Donaciones',
+    icon: 'heart-outline',
+    link: '/pages/donaciones',
+  },
+  {
     title: 'Mi perfil',
     icon: 'person-outline',
     link: '/pages/perfil/ver-perfil',
+  },
+  {
+    title: 'Moderar',
+    icon: 'eye-outline',
+    link: '/pages/moderar',
+  },
+  {
+    title: 'Admin',
+    icon: 'settings-2-outline',
+    link: '/pages/admin',
   },
   {
     title: 'Demos',

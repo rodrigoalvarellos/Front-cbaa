@@ -17,14 +17,16 @@ const routes: Routes = [
   },
   {
     path: 'pages',
-    loadChildren: () => import('app/pages/pages.module')
+    // loadChildren: () => import('app/pages/pages.module')
+    loadChildren: () => import('./pages/pages.module')
       .then(m => m.PagesModule),
   },
   {
     path: 'auth',
-    loadChildren: './auth/auth.module#AuthModule',
+    // loadChildren: './auth/auth.module#AuthModule',
+    loadChildren: () => import('./auth/auth.module')
+    .then(m => m.AuthModule),
   },
-
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
   { path: '**', redirectTo: 'landing' },
 ];

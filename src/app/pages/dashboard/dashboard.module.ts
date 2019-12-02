@@ -6,7 +6,6 @@ import { DashboardComponent } from './dashboard.component';
 
 @NgModule({
   imports: [
-    NbCardModule,
     ThemeModule,
   ],
   declarations: [

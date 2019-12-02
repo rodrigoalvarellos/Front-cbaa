@@ -9,6 +9,7 @@ import { LoginService } from '../../../services/login.service';
 import { FireUploadService } from '../../../services/fire-upload.service';
 import { PerfilUsuarioService } from '../../../services/perfil-usuario.service';
 import { FormValidationService } from '../../../services/forms-validations.service';
+import { ToastrService } from '../../../services/toastr.service';
 
 @Component({
   selector: 'cba-editar-perfil',
@@ -35,11 +36,12 @@ export class EditarPerfilComponent implements OnInit, OnDestroy {
 
   constructor(
     public login$: LoginService,
-    private fb: FormBuilder,
     public form$: FormValidationService,
     public fireUp$: FireUploadService,
+    private perfil$: PerfilUsuarioService,
     private router: Router,
-    private perfil$: PerfilUsuarioService) { }
+    private fb: FormBuilder,
+    private toastr$: ToastrService ) { }
 
   ngOnInit() {
 
@@ -99,7 +101,7 @@ export class EditarPerfilComponent implements OnInit, OnDestroy {
 
     // TODO - Implementar
     if (this.userForm.invalid) {
-      console.log('Form invalido');
+      this.toastr$.showToast('danger', 'Cuidado', 'Faltan datos importantes.');
       return;
     }
 
@@ -122,7 +124,6 @@ export class EditarPerfilComponent implements OnInit, OnDestroy {
   }
 
   guardarUser() {
-    // TODO - Enviar data al BE
 
     const newUser = { ...this.user };
 
@@ -145,9 +146,15 @@ export class EditarPerfilComponent implements OnInit, OnDestroy {
     this.perfil$.updateUser(newUser).subscribe(
       (userActualizado) => {
         this.login$.setUser(userActualizado);
-        console.log('Guardado correctamente', userActualizado);
+        this.toastr$.showToast('success', 'Actualizado!', 'Tus datos se actualizaron con exito 😊');
+        if ( this.user.foto !== null && newUser.foto) {
+          this.fireUp$.deleteFile(this.user.foto)
+          .then(resp => console.log('Foto Anterior borrada con exito'))
+          .catch( err => console.log('Ocurrio un error al eliminar la foto vieja'));
+        }
+
       },
-      (err) => console.log(err.message),
+      (err) => this.toastr$.showToast('danger', 'Ooops! 😱', 'Ocurrió un error al guardar tus datos, intantalo nuevamente'),
       () => {
         this.guardando = false; // Quitar Spinner
         this.router.navigate(['pages/perfil/ver-perfil']); // TODO Redirigir a Ver Perfil y actualizar los datos

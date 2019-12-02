@@ -62,10 +62,10 @@ export class FireUploadService {
     return snapshot.state === 'running' && snapshot.bytesTransferred < snapshot.totalBytes;
   }
 
-  deleteFile(link: string) {
-    this.storage.storage.refFromURL(link).delete()
-      .then( () => this.toastr$.showToast('warning', 'Imagen eliminada', 'La imagen ha sido eliminada correctamente'))
-      .catch( err => this.toastr$.showToast('danger', 'Error', err.message));
+  deleteFile(link: string): Promise<any> {
+    return this.storage.storage.refFromURL(link).delete();
+      // .then( () => this.toastr$.showToast('warning', 'Imagen eliminada', 'La imagen ha sido eliminada correctamente'))
+      // .catch( err => this.toastr$.showToast('danger', 'Error', err.message));
   }
 
 }
