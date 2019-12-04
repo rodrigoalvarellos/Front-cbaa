@@ -1,5 +1,29 @@
-<p>admin works!</p>
+<nb-card>
 
-<div>
-    <router-outlet></router-outlet>
-</div>
+    <nb-card-header>
+        <h3>Administracion de todas las configuraciones</h3>
+    </nb-card-header>
+
+    <nb-card-body>
+
+        <div class="row">
+            <div class="col-md-6">
+                <cba-categorias-admin></cba-categorias-admin>
+            </div>
+            <div class="col-md-6">
+                <cba-discapacidades-admin></cba-discapacidades-admin>
+            </div>
+            
+            <div class="col-md-12 mt-5">
+                <cba-organizaciones-admin></cba-organizaciones-admin>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <p>El Router outlet</p>
+            <router-outlet></router-outlet>
+        </div>
+        
+    </nb-card-body>
+</nb-card>
+

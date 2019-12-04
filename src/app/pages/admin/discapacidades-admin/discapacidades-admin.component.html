@@ -1,0 +1,7 @@
+<label>Discapacidades: {{ selected?.nombre | ngxCapitalize }}</label>
+<div *ngIf="discapacidades$ | async as discs">
+  <nb-select placeholder="Discapacidades" [(selected)]="selected" fullWidth>
+    <nb-option [value]="null">Ninguna</nb-option>
+    <nb-option [value]="d" *ngFor="let d of discs">{{ d.nombre | ngxCapitalize }}</nb-option>
+  </nb-select>
+</div>

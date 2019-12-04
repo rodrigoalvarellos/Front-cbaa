@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
+import { of, Observable } from 'rxjs';
+import { ICategoria } from '../classes/categoria.interface';
 
 @Injectable({providedIn: 'root'})
 export class CategoriasService {
@@ -10,22 +12,18 @@ export class CategoriasService {
 
   constructor( public http: HttpClient) { }
 
-  getCategorias() {
+  getCategorias(): Observable<ICategoria[]> {
 
-    const lsCateg =localStorage.getItem('categorias');
+    const lsCateg: ICategoria[] = JSON.parse(localStorage.getItem('categorias'));
 
-    if(  lsCateg !== null) {
-      console.log(lsCateg);
+    if (  lsCateg !== null) {
+      return of(lsCateg);
     } else {
-
-      return this.http.get(this.CTRL_URL).pipe(
-        map( (categ) => {
+        return this.http.get(this.CTRL_URL).pipe( map( ( categ: ICategoria[] ) => {
           localStorage.setItem('categorias', JSON.stringify(categ));
           return categ;
-        })
-      );
+        }));
     }
-
   }
 
 }

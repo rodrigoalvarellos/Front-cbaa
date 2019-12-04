@@ -1,0 +1,26 @@
+<h5>Organizaciones:</h5>
+
+<div *ngIf="organizaciones$ | async as orgs">
+
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Dirección</th>
+                <th>Is Active?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let o of orgs">
+                <td>{{o.nombre}}</td>
+                <td>{{o.email}}</td>
+                <td>{{o.direccion}}</td>
+                <td>{{o.isActive}}</td>
+            </tr>          
+        </tbody>
+    </table>
+
+    <pre>{{ orgs[0] | json }}</pre>
+
+</div>
