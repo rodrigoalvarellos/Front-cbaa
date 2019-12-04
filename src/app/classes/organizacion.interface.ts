@@ -6,6 +6,7 @@ export interface IOrganizacion {
     descripcion?: string;
     telefono?: string;
     categorias: [];
+    discapacidades: [];
     direccion: string;
     lat: number;
     lng: number;
