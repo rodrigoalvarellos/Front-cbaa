@@ -57,6 +57,13 @@ MIT
 @angular/core
 MIT
 
+@angular/fire
+MIT
+
+@angular/fire/firestore
+
+@angular/fire/storage
+
 @angular/forms
 MIT
 
@@ -65,6 +72,24 @@ MIT
 
 @angular/router
 MIT
+
+@firebase/app
+Apache-2.0
+
+@firebase/firestore
+Apache-2.0
+
+@firebase/logger
+Apache-2.0
+
+@firebase/storage
+Apache-2.0
+
+@firebase/util
+Apache-2.0
+
+@firebase/webchannel-wrapper
+Apache-2.0
 
 @nebular/auth
 MIT
@@ -225,6 +250,12 @@ THE SOFTWARE.
 
 eva-icons
 MIT
+
+firebase/app
+
+firebase/firestore
+
+firebase/storage
 
 intersection-observer
 W3C-20150513
