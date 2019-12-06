@@ -1,5 +1,7 @@
 import { NbAuthOptions, NbDummyAuthStrategy, NbPasswordAuthStrategy, NbAuthJWTToken } from '@nebular/auth';
 import { HttpErrorResponse } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+
 
 // https://akveo.github.io/nebular/docs/auth/nbpasswordauthstrategy#nbpasswordauthstrategy
 
@@ -8,7 +10,8 @@ export const AUTH_OPTIONS: NbAuthOptions = {
         NbDummyAuthStrategy.setup({ name: 'demo', delay: 3000 }),
         NbPasswordAuthStrategy.setup({
             name: 'email',
-            baseEndpoint: 'http://localhost:3000/auth',
+            // baseEndpoint: 'http://localhost:3000/auth',
+            baseEndpoint: environment.BASE_API_URL + '/auth',
             token: { class: NbAuthJWTToken, key: 'token' },
             login: {
                 endpoint: '/login',
@@ -32,11 +35,11 @@ export const AUTH_OPTIONS: NbAuthOptions = {
                 defaultErrors: ['Something went wrong, please try again.'],
                 defaultMessages: ['You have been successfully logged out.'],
             },
-            errors: {
-                getter: (module: string, res: HttpErrorResponse) => {
-                     return [res.error.message];
-                },
-            },
+            // errors: {
+            //     getter: (module: string, res: HttpErrorResponse) => {
+            //         return [res.error.message];
+            //     },
+            // },
         }),
     ],
     forms: {

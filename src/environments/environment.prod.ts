@@ -5,7 +5,7 @@
  */
 export const environment = {
   production: true,
-  BASE_API_URL : 'https://back-cbaa.herokuapp.com/',
+  BASE_API_URL : 'https://back-cbaa.herokuapp.com',
   firebase: {
     apiKey: 'AIzaSyB_-uMT7qqkLFptaVxpq0GbzKfJmpbFnXY',
     authDomain: 'cba-accesible.firebaseapp.com',
