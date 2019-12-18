@@ -16,7 +16,7 @@ export class CategoriasService {
 
     const lsCateg: ICategoria[] = JSON.parse(localStorage.getItem('categorias'));
 
-    if (  lsCateg !== null) {
+    if (  lsCateg !== null && lsCateg.length > 0) {
       return of(lsCateg);
     } else {
         return this.http.get(this.CTRL_URL).pipe( map( ( categ: ICategoria[] ) => {
@@ -24,6 +24,10 @@ export class CategoriasService {
           return categ;
         }));
     }
+  }
+
+  createCategoria( categoria: ICategoria ) {
+    return this.http.post( this.CTRL_URL, categoria );
   }
 
 }

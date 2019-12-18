@@ -1,0 +1,55 @@
+
+<h5>Crear nueva categoria</h5>
+<form [formGroup]="categForm" (ngSubmit)="submitForm()">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label for="inputCatNombre" class="label"
+          >Nombre 
+          <span class="ml-3 text-danger" *ngIf="formErrors.nombre">{{ formErrors.nombre }}</span>
+        </label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="inputCatNombre"         
+          formControlName="nombre"
+          [status]="formErrors.nombre ? 'danger' : 'basic'"
+        />    
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label for="inputCatIcono" class="label"
+          >Icono 
+          <span class="ml-3 text-danger" *ngIf="formErrors.nombre">{{ formErrors.icono }}</span>
+        </label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="inputCatIcono"         
+          formControlName="icono"
+          [status]="formErrors.nombre ? 'danger' : 'basic'"
+        />    
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label for="inputCatDescripcion" class="label">Descripción</label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="inputCatDescripcion"         
+          formControlName="descripcion"          
+        />    
+      </div>
+    </div>
+
+    <div class="col-sm-12">
+      <button class="float-right mt-3" type="submit" nbButton [disabled]="categForm.invalid">Crear</button>
+    </div>
+
+  </div>
+</form>

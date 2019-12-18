@@ -1,0 +1,5 @@
+<nb-list *ngIf="users$ | async as users">
+  <nb-list-item *ngFor="let u of users">
+    {{ u.email }} - {{ u.role }} - {{ u.isActive }}
+  </nb-list-item>
+</nb-list>

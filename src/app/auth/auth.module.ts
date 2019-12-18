@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { NgxAuthRoutingModule } from './auth-routing.module';
-import { NbAuthModule } from '@nebular/auth';
+import { NbAuthModule, NbAuthJWTInterceptor, NB_AUTH_TOKEN_INTERCEPTOR_FILTER } from '@nebular/auth';
 import {
   NbAlertModule,
   NbButtonModule,
@@ -14,6 +14,7 @@ import {
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AUTH_OPTIONS } from './auth.config';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -31,6 +32,10 @@ import { AUTH_OPTIONS } from './auth.config';
   declarations: [
     LoginComponent,
     RegisterComponent,
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: NbAuthJWTInterceptor, multi: true},
+    { provide: NB_AUTH_TOKEN_INTERCEPTOR_FILTER, useValue: (req) => false},
   ],
 })
 export class AuthModule {}

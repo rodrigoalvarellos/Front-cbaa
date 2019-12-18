@@ -1,9 +1,17 @@
 
 <label>Categorias: {{ selected?.nombre | ngxCapitalize }}</label>
+
 <div *ngIf="categorias$ | async as cats;">
   <nb-select placeholder="Categorias" [(selected)]="selected" fullWidth>
     <nb-option [value]="null">Ninguna</nb-option>
     <nb-option [value]="c" *ngFor="let c of cats ">{{ c.nombre | ngxCapitalize }}</nb-option>  
   </nb-select>
 </div>
+
+<br>
+<br>
+
+<cba-create-categoria></cba-create-categoria>
+
+
 

@@ -1,5 +1,5 @@
 export interface IDiscapacidad {
-    _id: string;
+    _id?: string;
     nombre: string;
     icono?: string;
     descripcion?: string;

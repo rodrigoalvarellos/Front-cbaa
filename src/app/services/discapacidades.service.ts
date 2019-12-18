@@ -18,7 +18,7 @@ export class DiscapacidadesService {
 
     const lsDiscs: IDiscapacidad[] = JSON.parse(localStorage.getItem('discapacidades'));
 
-    if (  lsDiscs !== null) {
+    if (  lsDiscs !== null && lsDiscs.length < 0) {
 
       return of(lsDiscs);
 
@@ -30,6 +30,10 @@ export class DiscapacidadesService {
       }));
 
     }
+  }
+
+  createDiscapacidad( discapacidad: IDiscapacidad ) {
+    return this.http.post(this.CTRL_URL, discapacidad);
   }
 
 }

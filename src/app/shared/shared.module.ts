@@ -7,6 +7,7 @@ import { AgmCoreModule } from '@agm/core';
 import { DropZoneDirective } from '../directives/drop-zone.directive';
 import { FileSizePipe } from '../pipes/format-file-size.pipe';
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const COMPONENTS = [
   MapaComponent,
@@ -18,6 +19,12 @@ const PIPES = [
   FileSizePipe,
 ];
 
+const MODULES = [
+  CommonModule,
+  FormsModule,
+  ReactiveFormsModule,
+];
+
 const DIRECTIVES = [
   DropZoneDirective,
 ];
@@ -25,13 +32,13 @@ const DIRECTIVES = [
 @NgModule({
   declarations: [ ...COMPONENTS, ...DIRECTIVES, ...PIPES  ],
   imports: [
-    CommonModule,
+    ...MODULES,
     ThemeModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDrPAwLwfHuEjpwDaY6BkbfzFAJeMN4epU',
       libraries: ['places'],
     }),
   ],
-  exports: [ ...COMPONENTS, ...DIRECTIVES, ...PIPES ],
+  exports: [ ...COMPONENTS, ...DIRECTIVES, ...PIPES, ...MODULES ],
 })
 export class SharedModule { }

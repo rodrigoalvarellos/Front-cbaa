@@ -6,7 +6,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // Firebase
 import { AngularFireModule } from '@angular/fire';
@@ -32,7 +32,6 @@ import {
 
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
-import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 
 @NgModule({
@@ -65,7 +64,8 @@ import { AuthModule } from './auth/auth.module';
   exports: [
     AngularFirestoreModule,
     AngularFireStorageModule,
-  ],
+  ], 
+
 })
 export class AppModule {
 }

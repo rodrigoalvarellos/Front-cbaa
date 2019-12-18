@@ -1,29 +1,20 @@
 <nb-card>
+  <nb-card-header>
+    <h5>Administracion de todas las configuraciones</h5>
+  </nb-card-header>
 
-    <nb-card-header>
-        <h3>Administracion de todas las configuraciones</h3>
-    </nb-card-header>
-
-    <nb-card-body>
-
-        <div class="row">
-            <div class="col-md-6">
-                <cba-categorias-admin></cba-categorias-admin>
-            </div>
-            <div class="col-md-6">
-                <cba-discapacidades-admin></cba-discapacidades-admin>
-            </div>
-            
-            <div class="col-md-12 mt-5">
-                <cba-organizaciones-admin></cba-organizaciones-admin>
-            </div>
-        </div>
-
-        <div class="row mt-5">
-            <p>El Router outlet</p>
-            <router-outlet></router-outlet>
-        </div>
-        
-    </nb-card-body>
+  <nb-card-body>
+    <nb-tabset>
+      <nb-tab tabTitle="Usuarios">
+       <cba-usuarios-admin></cba-usuarios-admin>
+      </nb-tab>
+      <nb-tab tabTitle="Categorias">
+        <cba-categorias-admin></cba-categorias-admin>
+      </nb-tab>
+      <nb-tab tabTitle="Discapacidades">
+        <cba-discapacidades-admin></cba-discapacidades-admin>
+      </nb-tab>
+    </nb-tabset>
+    <!-- <router-outlet></router-outlet> -->
+  </nb-card-body>
 </nb-card>
-

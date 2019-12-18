@@ -1,0 +1,64 @@
+<h5>Crear nueva Discapacidad</h5>
+<form [formGroup]="discForm" (ngSubmit)="submitForm()">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label for="inputDiscNombre" class="label"
+          >Nombre
+          <span class="ml-3 text-danger" *ngIf="formErrors.nombre">{{
+            formErrors.nombre
+          }}</span>
+        </label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="inputDiscNombre"
+          formControlName="nombre"
+          [status]="formErrors.nombre ? 'danger' : 'basic'"
+        />
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label for="inputDiscIcono" class="label"
+          >Icono
+          <span class="ml-3 text-danger" *ngIf="formErrors.nombre">{{
+            formErrors.icono
+          }}</span>
+        </label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="inputDiscIcono"
+          formControlName="icono"
+          [status]="formErrors.nombre ? 'danger' : 'basic'"
+        />
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label for="inputDiscDescripcion" class="label">Descripción</label>
+        <input
+          type="text"
+          nbInput
+          fullWidth
+          id="inputDiscDescripcion"
+          formControlName="descripcion"
+        />
+      </div>
+    </div>
+
+    <div class="col-sm-12">
+      <button
+        class="float-right mt-3"
+        type="submit"
+        nbButton
+        [disabled]="discForm.invalid"
+      >
+        Crear
+      </button>
+    </div>
+  </div>
+</form>
