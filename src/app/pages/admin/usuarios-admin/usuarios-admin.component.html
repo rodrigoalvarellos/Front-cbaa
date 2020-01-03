@@ -1,5 +1,14 @@
-<nb-list *ngIf="users$ | async as users">
-  <nb-list-item *ngFor="let u of users">
-    {{ u.email }} - {{ u.role }} - {{ u.isActive }}
+<nb-list class="mt-5" *ngIf="users$ | async as users">
+
+  <nb-list-item class="item text-primary">    
+    <span>Email</span>
+    <span>Role</span>
+    <span>Esta Activo</span>
+  </nb-list-item>
+
+  <nb-list-item class="item" *ngFor="let u of users">   
+    <span>{{ u.email }}</span>   
+    <span>{{ u.role }}</span>
+    <span>{{ u.isActive }}</span>
   </nb-list-item>
 </nb-list>

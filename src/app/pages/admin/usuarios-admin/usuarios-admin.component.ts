@@ -6,12 +6,12 @@ import { IUser } from '../../../classes/user.interface';
 @Component({
   selector: 'cba-usuarios-admin',
   templateUrl: './usuarios-admin.component.html',
-  styleUrls: ['./usuarios-admin.component.scss']
+  styleUrls: ['./usuarios-admin.component.scss'],
 })
 export class UsuariosAdminComponent implements OnInit {
 
   users$: Observable<IUser[]>;
-  
+
   constructor( private userS: UsersService) { }
 
   ngOnInit() {
@@ -19,6 +19,6 @@ export class UsuariosAdminComponent implements OnInit {
   }
 
 
-  
+
 
 }
