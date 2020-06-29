@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { NgxAuthRoutingModule } from './auth-routing.module';
-import { NbAuthModule, NbAuthJWTInterceptor, NB_AUTH_TOKEN_INTERCEPTOR_FILTER } from '@nebular/auth';
+import { NbAuthModule, NbAuthJWTInterceptor, NbAuthSimpleInterceptor  , NB_AUTH_TOKEN_INTERCEPTOR_FILTER } from '@nebular/auth';
 import {
   NbAlertModule,
   NbButtonModule,

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "cba-accesible": {
+      "hosting": {
+        "front-cbaa": [
+          "cba-accesible"
+        ]
+      }
+    }
+  }
+}

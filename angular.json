@@ -5,13 +5,14 @@
   "projects": {
     "front-cbaa": {
       "root": "",
-      "sourceRoot": "src",  
+      "sourceRoot": "src",
       "prefix": "cba",
       "projectType": "application",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "preserveSymlinks": true,
             "rebaseRootRelativeCssUrls": true,
             "outputPath": "dist",
@@ -22,24 +23,26 @@
             "assets": [
               "src/assets",
               "src/favicon.ico",
-              "src/favicon.png"
+              "src/favicon.png"              
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/typeface-exo/index.css",
-              "node_modules/roboto-fontface/css/roboto/roboto-fontface.css",
-              "node_modules/ionicons/scss/ionicons.scss",
-              "node_modules/socicon/css/socicon.css",
-              "node_modules/nebular-icons/scss/nebular-icons.scss",
-              "node_modules/pace-js/templates/pace-theme-flash.tmpl.css",
+              "node_modules/roboto-fontface/css/roboto/roboto-fontface.css",             
+              "node_modules/@fortawesome/fontawesome-free/css/all.css",            
+              "node_modules/nebular-icons/scss/nebular-icons.scss",              
               "src/app/@theme/styles/styles.scss"
             ],
-            "scripts": [
-              "node_modules/pace-js/pace.min.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -82,23 +85,19 @@
             "karmaConfig": "./karma.conf.js",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
-            "scripts": [
-              "node_modules/pace-js/pace.min.js"
-            ],
+            "scripts": [],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/typeface-exo/index.css",
-              "node_modules/roboto-fontface/css/roboto/roboto-fontface.css",
-              "node_modules/ionicons/scss/ionicons.scss",
-              "node_modules/socicon/css/socicon.css",
-              "node_modules/nebular-icons/scss/nebular-icons.scss",
-              "node_modules/pace-js/templates/pace-theme-flash.tmpl.css",
+              "node_modules/roboto-fontface/css/roboto/roboto-fontface.css",              
+              "node_modules/font-awesome/scss/font-awesome.scss",              
+              "node_modules/nebular-icons/scss/nebular-icons.scss",              
               "src/app/@theme/styles/styles.scss"
             ],
             "assets": [
               "src/assets",
               "src/favicon.ico",
-              "src/favicon.png"
+              "src/favicon.png"            
             ]
           }
         },
@@ -112,6 +111,10 @@
             "typeCheck": true,
             "exclude": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     },
@@ -142,8 +145,14 @@
   "defaultProject": "front-cbaa",
   "schematics": {
     "@schematics/angular:component": {
-      "styleext": "scss"
+      "prefix": "cba",
+      "style": "scss"
     },
-    "@schematics/angular:directive": {}
+    "@schematics/angular:directive": {
+      "prefix": "cba"
+    }
+  },
+  "cli": {
+    "analytics": "0711bc55-8472-40e2-9aef-b36e06f5645a"
   }
 }

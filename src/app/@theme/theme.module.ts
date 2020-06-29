@@ -27,10 +27,8 @@ import { NbSecurityModule } from '@nebular/security';
 
 import {
   FooterComponent,
-  HeaderComponent,
-  LayoutDirectionSwitcherComponent,
-  SearchInputComponent,
-  SwitcherComponent,
+  HeaderComponent,  
+  SearchInputComponent, 
 } from './components';
 import {
   CapitalizePipe,
@@ -75,8 +73,6 @@ const NB_MODULES = [
   NbTabsetModule,
 ];
 const COMPONENTS = [
-  SwitcherComponent,
-  LayoutDirectionSwitcherComponent,
   HeaderComponent,
   FooterComponent,
   SearchInputComponent,
@@ -98,8 +94,8 @@ const PIPES = [
   declarations: [...COMPONENTS, ...PIPES],
 })
 export class ThemeModule {
-  static forRoot(): ModuleWithProviders {
-    return <ModuleWithProviders>{
+  static forRoot(): ModuleWithProviders<ThemeModule> {
+    return {
       ngModule: ThemeModule,
       providers: [
         ...NbThemeModule.forRoot(
