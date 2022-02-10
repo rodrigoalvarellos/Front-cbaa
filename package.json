@@ -55,7 +55,7 @@
     "intl": "1.2.5",
     "ionicons": "2.0.1",
     "nebular-icons": "1.1.0",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "normalize.css": "6.0.0",
     "roboto-fontface": "0.8.0",
     "rxjs": "6.5.5",
